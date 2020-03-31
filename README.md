@@ -55,4 +55,4 @@ HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
 ## References
 
 * [Galindo, M. P. (1986). Una Alternativa de Representación Simultanea: HJ-Biplot. Qüestiió, 10:13-23.](http://diarium.usal.es/pgalindo/files/2012/07/0article-HJ-1986.pdf)
-* [Erichson, N. B., et al. (2018). Sparse principal component analysis via variable projection. arXiv preprint arXiv:1804.00341.](https://arxiv.org/abs/1804.00341)
+* [Erichson, N. B., et al. (2018). Sparse principal component analysis via variable projection.](https://arxiv.org/abs/1804.00341)
