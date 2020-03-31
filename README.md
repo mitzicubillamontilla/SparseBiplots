@@ -26,8 +26,9 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 * `X`: data frame which provides the data to be analyzed. All the variables must be numeric.
 * `Transform_data`: character indicating whether the columns have to be scaled or centered. Allowed values are: `"center"` and `"scale"` (default).
-* `lambda`: tuning parameter for the Ridge or LASSO penalty
-* `operator`: 
+* `lambda`: tuning parameter for each penalty. In Elastic Net it refers to LASSO penalty.
+* `àlpha`: tuning parameter of the Ridge shrinkage (just allowed in Elastic Net).
+* `operator`: operator used to solve the norm L1. Allowed values are 
 * `ind_name`: logical value which indicates if prints the name for each row of X (FALSE by default).
 * `vec_name`: logical value which indicates if prints the name for each column of X (TRUE by default).
 
