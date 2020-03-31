@@ -24,6 +24,11 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ### Parameters
 
+* `X`: data frame which provides the data to be analyzed. All the variables must be numeric.
+* `Transform_data`: a value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".
+* `ind_name`: if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.
+* `vec_name`: 
+
 ### Values
 
 ## Example
