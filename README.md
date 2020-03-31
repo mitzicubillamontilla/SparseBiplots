@@ -15,6 +15,17 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ## Usage
 
+### Functions
+
+* ``
+* ``
+* ``
+* ``
+
+### Parameters
+
+### Values
+
 ## Example
 ```R
 library("SparseBiplots")
