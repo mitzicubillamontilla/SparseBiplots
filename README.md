@@ -1,4 +1,5 @@
 # SparseBiplots
+
 Sparse Biplots are modern variant of HJ-Biplot which attempts to find sparse loadings, i.e., weight vectors with only a few nonzero values. Introducing a penalty parameter helps improve the interpretation of the model because the axis are formed as a linear combination of only some of the original variables.
 
 This package provides functions to perform the HJ-Biplot (Galindo, 1986) and modifications introducing Ridge, LASSO and Elastic Net penalty:
@@ -9,6 +10,7 @@ This package provides functions to perform the HJ-Biplot (Galindo, 1986) and mod
 * `ElasticNet_HJBiplot`: performs the HJ-Biplot introducing Elastic Net penalty. For this use the [spca](https://github.com/erichson/spca) package.
 
 ## Installation
+
 * Install *SparseBiplots* from **CRAN**:
 ```R
 install.packages("SparseBiplots")
@@ -34,8 +36,23 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ### Values
 
+* `loadings`: loadings matrix.
+* `coord_ind`: row coordinates matrix (individuals).
+* `coord_var`: column coordinates matrix (variables).
+* `eigenvalues`: approximated eigenvalues vector.
+* `explvar`: vector containing the proportion of variance explained by the k axis obtained.
+* `n_ceros`: matrix which indicates the number of loadings equal to cero in each axis.
+
 ## Example
+
 ```R
 library("SparseBiplots")
 HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
 ```
+
+
+
+## References
+
+* 
+* 
