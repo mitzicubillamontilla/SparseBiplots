@@ -7,9 +7,9 @@
 install.packages("SparseBiplots")
 ```
 
-* Install *SparseBiplots* from **GitHub**:
+* Install *SparseBiplots* from **GitHub** using [devtools](https://github.com/r-lib/devtools):
 ```R
-# install.packages("devtools")
+install.packages("devtools")
 devtools::install_github("mitzicubillamontilla/SparseBiplots")
 ```
 
