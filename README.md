@@ -17,10 +17,10 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ### Functions
 
-* `HJBiplot`: 
-* `Ridge_HJBiplot`: 
-* `LASSO_HJBiplot`: 
-* `ElasticNet_HJBiplot`: 
+* `HJBiplot`: performs the HJ-Biplot (Galindo, 1986).
+* `Ridge_HJBiplot`: performs the HJ-Biplot introducing Ridge penalty
+* `LASSO_HJBiplot`: performs the HJ-Biplot introducing LASSO penalty
+* `ElasticNet_HJBiplot`: performs the HJ-Biplot introducing Elastic Net penalty. For this use the [spca](https://github.com/erichson/spca) package
 
 ### Parameters
 
