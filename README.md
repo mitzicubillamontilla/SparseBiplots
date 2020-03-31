@@ -17,10 +17,10 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ### Functions
 
-* ``
-* ``
-* ``
-* ``
+* `HJBiplot`: 
+* `Ridge_HJBiplot`: 
+* `LASSO_HJBiplot`: 
+* `ElasticNet_HJBiplot`: 
 
 ### Parameters
 
