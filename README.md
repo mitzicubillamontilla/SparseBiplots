@@ -16,6 +16,7 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 ## Usage
 
 ## Example
-```{r, echo=TRUE}
- HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
+```{r}
+library("SparseBiplots")
+HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
 ```
