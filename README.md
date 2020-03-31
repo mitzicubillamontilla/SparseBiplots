@@ -10,5 +10,5 @@ install.packages("SparseBiplots")
 * Install `SparseBiplots` from GitHub:
 ```{r}
 # install.packages("devtools")
-
+devtools::install_github("mitzicubillamontilla/SparseBiplots")
 ```
