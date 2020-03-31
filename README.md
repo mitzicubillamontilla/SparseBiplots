@@ -1,5 +1,5 @@
 # SparseBiplots
-*SparseBiplots* library is a modern variant of HJ-Biplot which attempts to find sparse loadings, i.e., weight vectors with only a few nonzero values. 
+Sparse Biplots are modern variant of HJ-Biplot which attempts to find sparse loadings, i.e., weight vectors with only a few nonzero values. 
 
 ## Installation
 * Install *SparseBiplots* from **CRAN**:
