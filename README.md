@@ -41,7 +41,7 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 * `coord_var`: column coordinates matrix (variables).
 * `eigenvalues`: approximated eigenvalues vector.
 * `explvar`: vector containing the proportion of variance explained by the k axis obtained.
-* `n_ceros`: matrix which indicates the number of loadings equal to cero in each axis.
+* `n_ceros`: matrix which indicates the number of loadings equal to cero in each axis (output exclusive just for LASSO and Elastic net penalties)
 
 ## Example
 
@@ -54,5 +54,5 @@ HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
 
 ## References
 
-* 
-* 
+* [Galindo, M. P. (1986). Una Alternativa de Representación Simultanea: HJ-Biplot. Qüestiió, 10:13{23.](http://diarium.usal.es/pgalindo/files/2012/07/0article-HJ-1986.pdf)
+* [N. Benjamin Erichson, et al. "Sparse Principal Component Analysis via Variable Projection." (2018)](https://arxiv.org/abs/1804.00341)
