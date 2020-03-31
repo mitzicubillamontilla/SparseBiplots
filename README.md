@@ -3,12 +3,12 @@
 
 ## Installation
 * Install *SparseBiplots* from **CRAN**:
-```{r}
+```R
 install.packages("SparseBiplots")
 ```
 
 * Install *SparseBiplots* from **GitHub**:
-```{r}
+```R
 # install.packages("devtools")
 devtools::install_github("mitzicubillamontilla/SparseBiplots")
 ```
@@ -16,7 +16,7 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 ## Usage
 
 ## Example
-```{r}
+```R
 library("SparseBiplots")
 HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
 ```
