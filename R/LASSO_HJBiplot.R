@@ -1,6 +1,6 @@
 #' @title LASSO HJ Biplot
 #'
-#' @description This function make the HJ Biplot using the norm L1 (LASSO).
+#' @description This function performs the representation of the SPARSE HJ Biplot applying the LASSO regularization, on the original data matrix, implementing the norm L1.
 #'
 #' @usage LASSO_HJBiplot(X, lambda, transform_data = 'scale',
 #'     operator = 'Hard-Thresholding',
@@ -12,7 +12,7 @@
 #' @param lambda  float; \cr
 #'     Tuning parameter for the LASSO penalty
 #'
-#' @param transform_data character; \cr
+#' @param Transform_data character; \cr
 #'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".
 #'
 #' @param operator character; \cr
@@ -51,7 +51,7 @@
 #'           an vector containing the proportion of variance explained by the first 1, 2,.,k sparse principal components obtained.
 #'           }
 #'
-#' @author Mitzi Cubilla-Montilla  and Carlos Torres Cubilla
+#' @author Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 #'
 #' @references
 #' \itemize{

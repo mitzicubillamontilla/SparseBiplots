@@ -14,14 +14,14 @@ A data frame which provides the data to be analyzed. All the variables must be n
 \item{lambda}{float; \cr
 Tuning parameter for the Ridge penalty}
 
+\item{transform_data}{character; \cr
+A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default it is "scale".}
+
 \item{ind_name}{bool; \cr
 If it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.}
 
 \item{vec_name}{bool; \cr
 If it is TRUE (default) it prints the name for each column of X. If it FALSE does not print the names.}
-
-\item{Transform_data}{character; \cr
-A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default it is "scale".}
 }
 \value{
 \code{Ridge_HJBiplot} returns a list containing the following components:

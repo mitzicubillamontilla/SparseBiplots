@@ -1,7 +1,7 @@
-#' @title Ridge HJ-Biplot
+#' @title Ridge HJ Biplot
 #'
 #'
-#' @description This function performs the representation del SPARSE HJ Biplot applying a regularization procedure, with the Ridge regularization, on the original data matrix, implementing the norm L2.
+#' @description This function performs the representation of the SPARSE HJ Biplot applying the Ridge regularization, on the original data matrix, implementing the norm L2.
 #'
 #' @usage Ridge_HJBiplot (X, lambda, transform_data = 'scale', ind_name=FALSE,
 #'     vec_name = TRUE)
@@ -12,7 +12,7 @@
 #' @param lambda  float; \cr
 #'     Tuning parameter for the Ridge penalty
 #'
-#' @param transform_data character; \cr
+#' @param Transform_data character; \cr
 #'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default it is "scale".
 #'
 #' @param ind_name bool; \cr
@@ -44,13 +44,13 @@
 #'           an vector containing the proportion of variance explained by the first 1, 2,.,k sparse principal components obtained.
 #'           }
 #'
-#' @author Mitzi Cubilla-Montilla  and Carlos Torres Cubilla
+#' @author Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 #'
 #' @references
 #' \itemize{
 #'  \item Hoerl, A. E., & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1), 55-67.
 #'  \item Galindo, M. P. (1986). Una alternativa de representacion simultanea: HJ-Biplot. Questiio, 10(1), 13-23.
-#'  \item Zou, H., Hastie, T. and Tibshirani, R. (2004) &quot;Sparse principal component analysis&quot; Technical report, Statistics Dept. Stanford University.
+#'  \item Zou, H., Hastie, T., & Tibshirani, R. (2006). Sparse principal component analysis. Journal of computational and graphical statistics, 15(2), 265-286.
 #' }
 #'
 #' @examples

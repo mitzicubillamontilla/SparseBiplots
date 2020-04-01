@@ -11,14 +11,14 @@ HJBiplot (X, transform_data = 'scale', ind_name=FALSE,
 \item{X}{array_like; \cr
 A data frame which provides the data to be analyzed. All the variables must be numeric.}
 
+\item{transform_data}{character; \cr
+A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".}
+
 \item{ind_name}{bool; \cr
 If it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.}
 
 \item{vec_name}{bool; \cr
 If it is TRUE (default) it prints the name for each column of X. If it FALSE does not print the names.}
-
-\item{Transform_data}{character; \cr
-A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".}
 }
 \value{
 \code{HJBiplot} returns a list containing the following components:

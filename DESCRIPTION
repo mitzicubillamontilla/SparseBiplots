@@ -14,11 +14,10 @@ Encoding: UTF-8
 LazyData: true
 Depends: 
   R (>= 2.10), 
-  parsepca
+  sparsepca
 Imports: 
   sparsepca
 Suggest: 
   testthat
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 NeedsCompilation: no
-

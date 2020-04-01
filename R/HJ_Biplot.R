@@ -8,7 +8,7 @@
 #' @param X array_like; \cr
 #'     A data frame which provides the data to be analyzed. All the variables must be numeric.
 #'
-#' @param transform_data character; \cr
+#' @param Transform_data character; \cr
 #'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".
 #'
 #' @param ind_name bool; \cr
@@ -40,7 +40,7 @@
 #'           an vector containing the proportion of variance explained by the first 1, 2,.,k principal components obtained.
 #'           }
 #'
-#' @author Mitzi Cubilla-Montilla  and Carlos Torres Cubilla
+#' @author Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 #'
 #' @references
 #' \itemize{
