@@ -1,16 +1,24 @@
 Package: SparseBiplots
 Type: Package
 Title: HJ Biplot using diferents ways of penalization
-Version: 1.0.0
-Author: Mitzi Cubilla-Montilla <mitzi@usal.es> and 
-        Carlos Torres Cubilla <carlos_t22@usal.es>
+Version: 3.5.0
+Author: 
+  Mitzi Cubilla-Montilla <mitzi@usal.es>, 
+  Carlos Torres <carlos_t22@usal.es>,
+  Ana Belen Nieto Librero <ananieto@usal.es> and
+  Purificacion Galindo Villardon <pgalindo@usal.es>
 Maintainer: Mitzi Cubilla-Montilla <mitzi@usal.es>
-Depends: R (>= 2.10), sparsepca
 Description: The sparseHJBiplot package contains a set of functions that allow to represent multivariate on a subspace of low dimension, in such a way that most of the variability of the information is captured. This representation is carried out through the HJ Biplot methodology. A first method performs Galindo's HJ-Biplot (1986). Then, the package implements three new techniques and constructs in each case the HJ Biplot, adapting restrictions to contract and / or produce zero charges in the main components, based on the regularization theories. It implements three methods of regularization: Ridge, LASSO and Elastic Net. The functions are as follows: Ridge_HJBiplot, Lasso_HJBiplot and ElasticNet_HJBiplot.
-License: What license is it under?
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-Imports: sparsepca, Rdpack
+Depends: 
+  R (>= 2.10), 
+  parsepca
+Imports: 
+  sparsepca
+Suggest: 
+  testthat
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-RdMacros: Rdpack
+
