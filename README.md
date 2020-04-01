@@ -1,6 +1,6 @@
 # SparseBiplots
 
-[![CRAN status](https://www.r-pkg.org/badges/version/tidyr)](https://cran.r-project.org/package=tidyr)
+[![CRAN status](https://www.r-pkg.org/badges/version/SparseBiplots)](https://cran.r-project.org/web/packages/SparseBiplots/index.html)
 
 Sparse Biplots are modern variant of HJ-Biplot which attempts to find sparse loadings, i.e., weight vectors with only a few nonzero values. Introducing a penalty parameter helps improve the interpretation of the model because the axis are formed as a linear combination of only some of the original variables.
 
