@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ridge_HJBiplot.R
 \name{Ridge_HJBiplot}
 \alias{Ridge_HJBiplot}
-\title{Ridge HJ-Biplot}
+\title{Ridge HJ Biplot}
 \usage{
 Ridge_HJBiplot (X, lambda, transform_data = 'scale', ind_name=FALSE,
     vec_name = TRUE)
@@ -46,7 +46,7 @@ If it is TRUE (default) it prints the name for each column of X. If it FALSE doe
           }
 }
 \description{
-This function performs the representation del SPARSE HJ Biplot applying a regularization procedure, with the Ridge regularization, on the original data matrix, implementing the norm L2.
+This function performs the representation of the SPARSE HJ Biplot applying the Ridge regularization, on the original data matrix, implementing the norm L2.
 }
 \details{
 Algorithm used to contract the loads of the main components towards zero, but without achieving the nullity of any. If the penalty parameter is less than or equal to 1e-4 the result is like Galindo's HJ Biplot (1986).
@@ -60,9 +60,9 @@ Algorithm used to contract the loads of the main components towards zero, but wi
 \itemize{
  \item Hoerl, A. E., & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1), 55-67.
  \item Galindo, M. P. (1986). Una alternativa de representacion simultanea: HJ-Biplot. Questiio, 10(1), 13-23.
- \item Zou, H., Hastie, T. and Tibshirani, R. (2004) &quot;Sparse principal component analysis&quot; Technical report, Statistics Dept. Stanford University.
+ \item Zou, H., Hastie, T., & Tibshirani, R. (2006). Sparse principal component analysis. Journal of computational and graphical statistics, 15(2), 265-286.
 }
 }
 \author{
-Mitzi Cubilla-Montilla  and Carlos Torres Cubilla
+Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 }

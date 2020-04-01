@@ -54,7 +54,7 @@ If it is TRUE (default) it prints the name for each column of X. If it is FALSE 
           }
 }
 \description{
-This function make the HJ Biplot using the norm L1 (LASSO).
+This function performs the representation of the SPARSE HJ Biplot applying the LASSO regularization, on the original data matrix, implementing the norm L1.
 }
 \details{
 Algorithm that performs a procedure of contraction and selection of variables. LASSO imposes a penalty that causes the charges of some components to be reduced to zero. By producing zero loadings for some components and not zero for others, the Lasso technique performs selection of variables. As the value of the penalty approaches one, the loadings approach zero.
@@ -73,5 +73,5 @@ Algorithm that performs a procedure of contraction and selection of variables. L
 }
 }
 \author{
-Mitzi Cubilla-Montilla  and Carlos Torres Cubilla
+Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 }
