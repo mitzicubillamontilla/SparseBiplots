@@ -12,7 +12,7 @@
 #' @param lambda  float; \cr
 #'     Tuning parameter for the LASSO penalty
 #'
-#' @param Transform_data character; \cr
+#' @param transform_data character; \cr
 #'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".
 #'
 #' @param operator character; \cr
@@ -64,6 +64,8 @@
 #'  data(mtcars)
 #'  LASSO_HJBiplot(mtcars, 0.2, transform_data = 'scale', operator = 'Hard-Thresholding',
 #'  ind_name = TRUE)
+#'
+#' @importFrom graphics abline arrows plot text
 #'
 #' @export
 LASSO_HJBiplot = function(X, lambda, transform_data = 'scale',

@@ -2,9 +2,9 @@
 % Please edit documentation in R/ElasticNet_HJBiplot.R
 \name{ElasticNet_HJBiplot}
 \alias{ElasticNet_HJBiplot}
-\title{ElasticNet_HJBiplot}
+\title{Elastic Net HJ Biplot}
 \usage{
-LASSO_HJBiplot(X, lambda = 1e-04, alpha = 1e-04,transform_data = 'scale',
+ElasticNet_HJBiplot(X, lambda = 1e-04, alpha = 1e-04, transform_data = 'scale',
     ind_name=FALSE, vec_name = TRUE)
 }
 \arguments{
@@ -71,5 +71,5 @@ Algorithm used to perform automatic selection of variables and continuous contra
 }
 }
 \author{
-Mitzi Cubilla-Montilla  and Carlos Torres Cubilla
+Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 }

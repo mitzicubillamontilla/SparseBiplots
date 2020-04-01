@@ -2,7 +2,7 @@
 #'
 #' @description This function is a generalization of the Ridge regularization method and the LASSO penalty. Realizes the representation of the SPARSE HJ Biplot through a combination of LASSO and Ridge, on the data matrix. This means that with this function you can eliminate weak variables completely as with the LASSO regularization or contract them to zero as in Ridge.
 #'
-#' @usage LASSO_HJBiplot(X, lambda = 1e-04, alpha = 1e-04,transform_data = 'scale',
+#' @usage ElasticNet_HJBiplot(X, lambda = 1e-04, alpha = 1e-04, transform_data = 'scale',
 #'     ind_name=FALSE, vec_name = TRUE)
 #'
 #' @param X array_like; \cr
@@ -65,9 +65,11 @@
 #'
 #' @import sparsepca
 #'
+#' @importFrom graphics abline arrows plot text
+#'
 #' @export
 
-ElasticNet_HJBiplot = function(X, lambda, alpha, transform_data = 'scale',
+ElasticNet_HJBiplot = function(X, lambda = 1e-04, alpha = 1e-04, transform_data = 'scale',
                                ind_name = FALSE, vec_name = TRUE) {
 
   # List of objects that the function returns

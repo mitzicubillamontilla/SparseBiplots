@@ -8,7 +8,7 @@
 #' @param X array_like; \cr
 #'     A data frame which provides the data to be analyzed. All the variables must be numeric.
 #'
-#' @param Transform_data character; \cr
+#' @param transform_data character; \cr
 #'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".
 #'
 #' @param ind_name bool; \cr
@@ -51,6 +51,8 @@
 #' @examples
 #'  data(mtcars)
 #'  HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
+#'
+#' @importFrom graphics abline arrows plot text
 #'
 #' @export
 
