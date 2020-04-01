@@ -59,84 +59,108 @@
 #'
 #' @export
 
-Ridge_HJBiplot = function (X, lambda, transform_data = "scale", ind_name = FALSE,
-                           vec_name = TRUE)
-{
-  hj_ridge = list(loadings = NULL, coord_ind = NULL, coord_var = NULL,
-                  eigenvalues = NULL, explvar = NULL)
+Ridge_HJBiplot = function(X, lambda, transform_data = 'scale', ind_name = FALSE,
+                          vec_name = TRUE){
+
+  # List of objects that the function returns
+  hj_ridge = list(loadings = NULL,
+                  coord_ind = NULL,
+                  coord_var = NULL,
+                  eigenvalues = NULL,
+                  explvar = NULL)
+
+  # Sample's tags
   ind_tag = rownames(X)
+
+  # Variable's tags
   vec_tag = colnames(X)
-  if (transform_data == "center") {
+
+  # Transform the data
+  if (transform_data == 'center') {
     X = scale(as.matrix(X), center = TRUE)
   }
-  if (transform_data == "scale") {
+
+  if (transform_data == 'scale') {
     X = scale(as.matrix(X), scale = TRUE)
   }
+
+  # SVD decomposition
   svd = svd(X)
   U = svd$u
   d = svd$d
   D = diag(d)
-  V = svd$v/(1 + lambda)
+  V = svd$v/(1+lambda)
+
+  # Components' names
   PCs = vector()
-  for (i in 1:dim(V)[2]) {
+  for (i in 1:dim(V)[2]){
     npc = vector()
-    npc = paste(c("PC", i), collapse = "")
+    npc = paste(c("PC",i), collapse = "")
     PCs = cbind(PCs, npc)
   }
+
+  # Objects returned by the function
   hj_ridge$loadings = V
-  row.names(hj_ridge$loadings) = vec_tag
-  colnames(hj_ridge$loadings) = PCs
-  hj_ridge$coord_ind = X %*% V
-  colnames(hj_ridge$coord_ind) = PCs
-  hj_ridge$coord_var = t(D %*% t(V))
-  row.names(hj_ridge$coord_var) = vec_tag
-  colnames(hj_ridge$coord_var) = PCs
-  QR = qr(hj_ridge$coord_ind)
-  R = qr.R(QR)
-  hj_ridge$eigenvalues = round(abs(diag(R)), digits = 4)
-  vari = hj_ridge$eigenvalues^2
-  hj_ridge$explvar = round(vari/sum(vari), digits = 4) * 100
-  xmin = min(hj_ridge$coord_ind[, 1], hj_ridge$coord_var[,
-                                                         1]) - 0.3
-  xmax = max(hj_ridge$coord_ind[, 1], hj_ridge$coord_var[,
-                                                         1]) + 0.3
-  ymin = min(hj_ridge$coord_ind[, 2], hj_ridge$coord_var[,
-                                                         2]) - 0.3
-  ymax = max(hj_ridge$coord_ind[, 2], hj_ridge$coord_var[,
-                                                         2]) + 0.3
+  row.names(hj_ridge$loadings) = vec_tag #update row
+  colnames(hj_ridge$loadings) = PCs #update col
+  hj_ridge$coord_ind = X%*%V
+  colnames(hj_ridge$coord_ind) = PCs #update col
+  hj_ridge$coord_var = t(D%*%t(V))
+  row.names(hj_ridge$coord_var) = vec_tag #update row
+  colnames(hj_ridge$coord_var) = PCs #update col
+  QR = qr(hj_ridge$coord_ind) #Descomposicion QR
+  R = qr.R( QR )
+  hj_ridge$eigenvalues = round(abs(diag(R)),digits=4) #AUTOVALORES
+  vari=hj_ridge$eigenvalues^2
+  hj_ridge$explvar = round(vari/sum(vari), digits = 4)*100 #VARIANZA EXPLICADA
+
+  # Limits of the plot
+  xmin = min(hj_ridge$coord_ind[,1], hj_ridge$coord_var[,1]) - 0.3
+  xmax = max(hj_ridge$coord_ind[,1], hj_ridge$coord_var[,1]) + 0.3
+  ymin = min(hj_ridge$coord_ind[,2], hj_ridge$coord_var[,2]) - 0.3
+  ymax = max(hj_ridge$coord_ind[,2], hj_ridge$coord_var[,2]) + 0.3
+
+  # x and y labels
   var1 = paste(c("(", hj_ridge$explvar[1], "%", ")"), collapse = "")
   axis1 = paste(PCs[1], var1)
   var2 = paste(c("(", hj_ridge$explvar[2], "%", ")"), collapse = "")
   axis2 = paste(PCs[2], var2)
-  plot(hj_ridge$coord_ind, col = "green4", xlab = axis1, ylab = axis2,
-       pch = 20, xlim = c(xmin, xmax), ylim = c(ymin, ymax))
-  arrows(0, 0, hj_ridge$coord_var[, 1], hj_ridge$coord_var[,
-                                                           2], col = "blue", length = 0.1, angle = 20, lwd = 2)
-  abline(h = 0, v = 0, col = "gray30", lwd = 1, lty = 2)
-  if (ind_name == TRUE) {
-    i = 1
-    for (tag in ind_tag) {
-      text(hj_ridge$coord_ind[i, 1] + 0.15, hj_ridge$coord_ind[i,
-                                                               2] + 0.15, labels = ind_tag[i], col = "green4",
-           cex = 0.65, font = 2)
-      i = i + 1
+
+  # Plot
+  plot(hj_ridge$coord_ind, col = "green4",
+       xlab = axis1, ylab = axis2, pch = 20,
+       xlim = c(xmin, xmax), ylim = c(ymin, ymax))
+  arrows(0, 0, hj_ridge$coord_var[,1], hj_ridge$coord_var[,2],
+         col="blue", length = 0.1, angle = 20, lwd=2)
+  abline(h = 0, v = 0, col="gray30", lwd=1, lty = 2)
+
+  # Print sample's tags (if required)
+  if (ind_name == TRUE){
+    i=1
+    for (tag in ind_tag){
+      text(hj_ridge$coord_ind[i, 1]+0.15, hj_ridge$coord_ind[i, 2]+0.15,
+           labels = ind_tag[i], col = "green4", cex = 0.65,font=2)
+      i=i+1
     }
   }
-  if (vec_name == TRUE) {
-    i = 1
-    for (tag in vec_tag) {
+
+  # Print varables' tags (if required)
+  if(vec_name == TRUE){
+    i=1
+    for(tag in vec_tag){
       x = hj_ridge$coord_var[i, 1]
       y = hj_ridge$coord_var[i, 2]
-      if (x > 0) {
+      if (x > 0){
         text(x, y, labels = vec_tag[i], col = "blue",
-             cex = 0.75, pos = 4, font = 2)
-      }
-      else {
+             cex = 0.75, pos = 4,font=2)
+      } else{
         text(x, y, labels = vec_tag[i], col = "blue",
-             cex = 0.75, pos = 2, font = 2)
+             cex = 0.75, pos = 2, font=2)
       }
-      i = i + 1
+      i=i+1
     }
   }
+
   hj_ridge
+
 }
