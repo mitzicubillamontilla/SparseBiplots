@@ -40,7 +40,7 @@
 #'           an vector containing the proportion of variance explained by the first 1, 2,.,k principal components obtained.
 #'           }
 #'
-#' @author Mitzi Cubilla-Montilla, Carlos Torres, Ana Belen Nieto Librero and Purificacion Galindo Villardon
+#' @author Mitzi Cubilla-Montilla, Carlos Torres-Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 #'
 #' @references
 #' \itemize{

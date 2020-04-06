@@ -5,7 +5,7 @@
 \title{Elastic Net HJ Biplot}
 \usage{
 ElasticNet_HJBiplot(X, lambda = 1e-04, alpha = 1e-04, transform_data = 'scale',
-    ind_name=FALSE, vec_name = TRUE)
+    ind_name = FALSE, vec_name = TRUE)
 }
 \arguments{
 \item{X}{array_like; \cr
@@ -71,5 +71,5 @@ Algorithm used to perform automatic selection of variables and continuous contra
 }
 }
 \author{
-Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
+Mitzi Cubilla-Montilla, Carlos Torres, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 }

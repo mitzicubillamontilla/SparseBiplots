@@ -4,7 +4,7 @@ Title: HJ Biplot using diferents ways of penalization
 Version: 3.5.0
 Author: 
   Mitzi Cubilla-Montilla <mitzi@usal.es>, 
-  Carlos Torres <carlos_t22@usal.es>,
+  Carlos Torres-Cubilla <carlos_t22@usal.es>,
   Ana Belen Nieto Librero <ananieto@usal.es> and
   Purificacion Galindo Villardon <pgalindo@usal.es>
 Maintainer: 
@@ -19,3 +19,5 @@ Suggest:
   testthat
 RoxygenNote: 7.1.0
 NeedsCompilation: no
+Suggests: 
+    testthat

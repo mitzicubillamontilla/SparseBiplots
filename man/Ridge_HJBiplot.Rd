@@ -64,5 +64,5 @@ Algorithm used to contract the loads of the main components towards zero, but wi
 }
 }
 \author{
-Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
+Mitzi Cubilla-Montilla, Carlos Torres, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 }

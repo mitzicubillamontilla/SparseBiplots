@@ -44,7 +44,7 @@
 #'           an vector containing the proportion of variance explained by the first 1, 2,.,k sparse principal components obtained.
 #'           }
 #'
-#' @author Mitzi Cubilla-Montilla, Carlos Torres, Ana Belen Nieto Librero and Purificacion Galindo Villardon
+#' @author Mitzi Cubilla-Montilla, Carlos Torres-Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 #'
 #' @references
 #' \itemize{
@@ -112,7 +112,7 @@ Ridge_HJBiplot = function(X, lambda, transform_data = 'scale', ind_name = FALSE,
   colnames(hj_ridge$coord_var) = PCs #update col
   QR = qr(hj_ridge$coord_ind) #Descomposicion QR
   R = qr.R( QR )
-  hj_ridge$eigenvalues = round(abs(diag(R)),digits=4) #AUTOVALORES
+  hj_ridge$eigenvalues = round(abs(diag(R)), digits=4) #AUTOVALORES
   vari=hj_ridge$eigenvalues^2
   hj_ridge$explvar = round(vari/sum(vari), digits = 4)*100 #VARIANZA EXPLICADA
 

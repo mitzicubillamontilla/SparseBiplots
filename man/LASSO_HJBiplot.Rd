@@ -73,5 +73,5 @@ Algorithm that performs a procedure of contraction and selection of variables. L
 }
 }
 \author{
-Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
+Mitzi Cubilla-Montilla, Carlos Torres, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 }

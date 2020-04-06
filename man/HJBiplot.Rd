@@ -60,5 +60,5 @@ Algorithm used to construct the HJ Biplot. The Biplot is obtained as result of t
 }
 }
 \author{
-Mitzi Cubilla-Montilla, Carlos Torres Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
+Mitzi Cubilla-Montilla, Carlos Torres, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 }
