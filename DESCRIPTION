@@ -13,10 +13,11 @@ Description: The sparseHJBiplot package contains a set of functions that allow t
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.2)
+Depends: 
+  R (>= 3.2), 
+  ggplot2
 Imports: 
   sparsepca, 
-  ggplot2, 
   ggrepel
 Suggest: 
   testthat

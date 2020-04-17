@@ -17,6 +17,8 @@
 #'
 #' @param arrow.col Character indicating the color of the arrows.
 #'
+#' @param size size of the point.
+#'
 #' @param axis Vector with lenght 2 which contains the axis ploted in x and y axis.
 #'
 #' @param angle.vec Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.
@@ -38,7 +40,7 @@
 #' @export
 
 Plot_Biplot <- function(X, groups = NULL, ind.name = FALSE, vec.name = TRUE,
-                point.col = "red", arrow.col = "black",
+                point.col = "red", arrow.col = "black", size = 1,
                 axis = c(1,2), angle.vec = TRUE){
 
   #### 1. Params ####
@@ -105,7 +107,8 @@ Plot_Biplot <- function(X, groups = NULL, ind.name = FALSE, vec.name = TRUE,
     geom_point(
       aes(x = X$coord_ind[, x.var],
           y = X$coord_ind[, y.var],
-          colour = groups)
+          colour = groups),
+      size = size
       ) +
     #### >Plot arrows ####
       geom_segment(
@@ -137,7 +140,8 @@ Plot_Biplot <- function(X, groups = NULL, ind.name = FALSE, vec.name = TRUE,
     scale_colour_manual(values = point.col)
 
   #### >Vector names ####
-  biplot <-
+  if(vec.name == FALSE){
+    biplot <-
     biplot +
     geom_text_repel(
       aes(
@@ -152,6 +156,8 @@ Plot_Biplot <- function(X, groups = NULL, ind.name = FALSE, vec.name = TRUE,
       box.padding = 0.1,
       point.padding = 0.1
       )
+  }
+
 
   #### Hide legend ####
   if(hide.legend){

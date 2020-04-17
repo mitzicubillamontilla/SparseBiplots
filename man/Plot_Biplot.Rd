@@ -20,6 +20,8 @@ point.col = "red", arrow.col = "black", axis = c(1,2), angle.vec = TRUE)
 
 \item{arrow.col}{Character indicating the color of the arrows.}
 
+\item{size}{size of the point.}
+
 \item{axis}{Vector with lenght 2 which contains the axis ploted in x and y axis.}
 
 \item{angle.vec}{Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.}
