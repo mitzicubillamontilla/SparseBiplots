@@ -12,7 +12,7 @@ This package provides functions to perform the HJ-Biplot (Galindo, 1986) and mod
 * `Ridge_HJBiplot`: performs the HJ-Biplot introducing Ridge penalty.
 * `LASSO_HJBiplot`: performs the HJ-Biplot introducing LASSO penalty.
 * `ElasticNet_HJBiplot`: performs the HJ-Biplot introducing Elastic Net penalty. For this use the [spca](https://github.com/erichson/spca) package.
-* `Plot_Biplot`: Create the plot of the results obtained with any of the above functions. 
+* `Plot_Biplot`: create the plot of the results obtained with any of the above functions. It generates elegant data visualization using [ggplot2](https://github.com/tidyverse/ggplot2) with little code
 
 ## Installation
 
@@ -47,6 +47,17 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 * `eigenvalues`: approximated eigenvalues vector.
 * `explvar`: vector containing the proportion of variance explained by the k axis obtained.
 * `n_ceros`: matrix which indicates the number of loadings equal to cero in each axis (output exclusive just for LASSO and Elastic net penalties)
+
+### Plot_Biplot parameters
+* `X`: list containing the output of one of the functions of the package. 
+* `groups`: factor wich contains groups to consider in plot. By default no one group are considered.
+* `ind.name`: logical name indicating if prints the row names. 
+* `vec.name`: logical name indicating if prints the column names. 
+* `point.col`: color of the points. If groups are considered, this must be a vector of length equal to the number of groups considered
+* `arrow.col`: color of the arrows. 
+* `axis`: vector with lenght 2 which contains the axis ploted in x and y axis. 
+* `angle.vec`: logical name indicating if print the vector names with orentation of the angle of the vector. 
+
 
 ## Example
 
