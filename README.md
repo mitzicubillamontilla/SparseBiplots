@@ -12,10 +12,11 @@ This package provides functions to perform the HJ-Biplot (Galindo, 1986) and mod
 * `Ridge_HJBiplot`: performs the HJ-Biplot introducing Ridge penalty.
 * `LASSO_HJBiplot`: performs the HJ-Biplot introducing LASSO penalty.
 * `ElasticNet_HJBiplot`: performs the HJ-Biplot introducing Elastic Net penalty. For this use the [spca](https://github.com/erichson/spca) package.
+* `Plot_Biplot`: create the plot of the results obtained with any of the above functions. It generates elegant data visualization using [ggplot2](https://github.com/tidyverse/ggplot2) with little code
 
 ## Installation
 
-* Install *SparseBiplots* from **CRAN**:
+* Install *SparseBiplots* from **CRAN** (earlier version):
 ```R
 install.packages("SparseBiplots")
 ```
@@ -47,14 +48,29 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 * `explvar`: vector containing the proportion of variance explained by the k axis obtained.
 * `n_ceros`: matrix which indicates the number of loadings equal to cero in each axis (output exclusive just for LASSO and Elastic net penalties)
 
+### Plot_Biplot parameters
+* `X`: list containing the output of one of the functions of the package. 
+* `groups`: factor wich contains groups to consider in plot. By default no one group are considered.
+* `ind.name`: logical name indicating if prints the row names. 
+* `vec.name`: logical name indicating if prints the column names. 
+* `point.col`: color of the points. If groups are considered, this must be a vector of length equal to the number of groups considered
+* `arrow.col`: color of the arrows. 
+* `axis`: vector with lenght 2 which contains the axis ploted in x and y axis. 
+* `angle.vec`: logical name indicating if print the vector names with orentation of the angle of the vector. 
+
+
 ## Example
 
 ```R
 library("SparseBiplots")
-HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
+hj_mtcars <- HJBiplot(mtcars, transform_data = 'scale')
 ```
+It fit the HJ-Biplot on the R data `mtcars` returning a list that contains the results of the fiting (`hj_mtcars`). To create the plot use the function `Plot_Biplot` over the list obtained. 
 
-<img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJ_Example.png" width="750">
+```R
+Plot_Biplot(hj.biplot, ind.name = TRUE)
+```
+<img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJBiplot_mtcars.png" width="750">
 
 ## References
 
