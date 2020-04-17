@@ -32,7 +32,7 @@ Return a \code{\link{ggplot2}} object.
 }
 \examples{
 hj.biplot <- HJBiplot(mtcars, Transform.Data = 'scale')
-Plot_Biplot(hj.biplot)
+Plot_Biplot(hj.biplot, ind.name = TRUE)
 
 }
 \seealso{

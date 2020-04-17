@@ -29,7 +29,7 @@
 #'
 #' @examples
 #' hj.biplot <- HJBiplot(mtcars, Transform.Data = 'scale')
-#' Plot_Biplot(hj.biplot)
+#' Plot_Biplot(hj.biplot, ind.name = TRUE)
 #'
 #' @import ggplot2
 #'
