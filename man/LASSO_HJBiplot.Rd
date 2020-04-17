@@ -4,28 +4,20 @@
 \alias{LASSO_HJBiplot}
 \title{LASSO HJ Biplot}
 \usage{
-LASSO_HJBiplot(X, lambda, transform_data = 'scale',
-    operator = 'Hard-Thresholding',
-    ind_name=FALSE, vec_name = TRUE)
+LASSO_HJBiplot(X, Lambda, Transform.Data = 'scale', Operator = 'Hard-Thresholding')
 }
 \arguments{
 \item{X}{array_like; \cr
 A data frame which provides the data to be analyzed. All the variables must be numeric.}
 
-\item{lambda}{float; \cr
+\item{Lambda}{float; \cr
 Tuning parameter for the LASSO penalty}
 
-\item{transform_data}{character; \cr
+\item{Transform.Data}{character; \cr
 A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".}
 
-\item{operator}{character; \cr
-The operator used to solve the norm L1.}
-
-\item{ind_name}{bool; \cr
-If it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.}
-
-\item{vec_name}{bool; \cr
-If it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.}
+\item{Operator}{character; \cr
+The operator used to solve the norm L1. Allowed values are "Soft-Thresholding" and "Hard-Thresholding".}
 }
 \value{
 \code{LASSO_HJBiplot} returns a list containing the following components:
@@ -60,9 +52,7 @@ This function performs the representation of the SPARSE HJ Biplot applying the L
 Algorithm that performs a procedure of contraction and selection of variables. LASSO imposes a penalty that causes the charges of some components to be reduced to zero. By producing zero loadings for some components and not zero for others, the Lasso technique performs selection of variables. As the value of the penalty approaches one, the loadings approach zero.
 }
 \examples{
- data(mtcars)
- LASSO_HJBiplot(mtcars, 0.2, transform_data = 'scale', operator = 'Hard-Thresholding',
- ind_name = TRUE)
+ LASSO_HJBiplot(mtcars, Lambda = 0.2, Transform.Data = 'scale', Operator = 'Hard-Thresholding')
 
 }
 \references{
@@ -72,6 +62,9 @@ Algorithm that performs a procedure of contraction and selection of variables. L
  \item Tibshirani, R. (2011). Regression shrinkage and selection via the lasso: a retrospective. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 73(3), 273-282.
 }
 }
+\seealso{
+\code{\link{Plot_Biplot}}
+}
 \author{
-Mitzi Cubilla-Montilla, Carlos Torres, Ana Belen Nieto Librero and Purificacion Galindo Villardon
+Mitzi Cubilla-Montilla, Carlos Torres-Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 }

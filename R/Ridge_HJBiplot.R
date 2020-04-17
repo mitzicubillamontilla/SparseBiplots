@@ -1,29 +1,29 @@
 #' @title Ridge HJ Biplot
 #'
+#' @description This function performs the representation of the HJ Biplot applying the Ridge regularization, on the original data matrix, implementing the norm L2.
 #'
-#' @description This function performs the representation of the SPARSE HJ Biplot applying the Ridge regularization, on the original data matrix, implementing the norm L2.
-#'
-#' @usage Ridge_HJBiplot (X, lambda, transform_data = 'scale', ind_name=FALSE,
-#'     vec_name = TRUE)
+#' @usage Ridge_HJBiplot (X, Lambda, Transform.Data = 'scale')
 #'
 #' @param X array_like; \cr
 #'     A data frame which provides the data to be analyzed. All the variables must be numeric.
 #'
-#' @param lambda  float; \cr
-#'     Tuning parameter for the Ridge penalty
-#'
-#' @param transform_data character; \cr
+#' @param Transform.Data character; \cr
 #'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default it is "scale".
 #'
-#' @param ind_name bool; \cr
-#'     If it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.
-#'
-#' @param vec_name bool; \cr
-#'     If it is TRUE (default) it prints the name for each column of X. If it FALSE does not print the names.
+#' @param Lambda  float; \cr
+#'     Tuning parameter for the Ridge penalty
 #'
 #' @details Algorithm used to contract the loads of the main components towards zero, but without achieving the nullity of any. If the penalty parameter is less than or equal to 1e-4 the result is like Galindo's HJ Biplot (1986).
 #'
 #' @return \code{Ridge_HJBiplot} returns a list containing the following components:
+#' \item{eigenvalues}{  array_like; \cr
+#'           vector with the eigenvalues penalized.
+#'           }
+#'
+#' \item{explvar}{  array_like; \cr
+#'           an vector containing the proportion of variance explained by the first 1, 2,.,k sparse principal components obtained.
+#'           }
+#'
 #' \item{loadings}{  array_like; \cr
 #'           penalized loadings, the loadings of the sparse principal components.
 #'           }
@@ -36,132 +36,105 @@
 #'           matrix with the coordinates of variables.
 #'           }
 #'
-#' \item{eigenvalues}{  array_like; \cr
-#'           vector with the eigenvalues penalized.
-#'           }
-#'
-#' \item{explvar}{  array_like; \cr
-#'           an vector containing the proportion of variance explained by the first 1, 2,.,k sparse principal components obtained.
-#'           }
-#'
 #' @author Mitzi Cubilla-Montilla, Carlos Torres-Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 #'
 #' @references
 #' \itemize{
-#'  \item Hoerl, A. E., & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1), 55-67.
 #'  \item Galindo, M. P. (1986). Una alternativa de representacion simultanea: HJ-Biplot. Questiio, 10(1), 13-23.
+#'  \item Hoerl, A. E., & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1), 55-67.
 #'  \item Zou, H., Hastie, T., & Tibshirani, R. (2006). Sparse principal component analysis. Journal of computational and graphical statistics, 15(2), 265-286.
 #' }
 #'
-#' @examples
-#'  data(mtcars)
-#'  Ridge_HJBiplot(mtcars, 0.2, transform_data = 'scale', ind_name = TRUE)
+#' @seealso \code{\link{Plot_Biplot}}
 #'
-#' @importFrom graphics abline arrows plot text
+#' @examples
+#'  Ridge_HJBiplot(mtcars, Lambda = 0.2, Transform.Data = 'scale')
 #'
 #' @export
 
-Ridge_HJBiplot = function(X, lambda, transform_data = 'scale', ind_name = FALSE,
-                          vec_name = TRUE){
+Ridge_HJBiplot <- function(X, Lambda, Transform.Data = 'scale'){
 
   # List of objects that the function returns
-  hj_ridge = list(loadings = NULL,
-                  coord_ind = NULL,
-                  coord_var = NULL,
-                  eigenvalues = NULL,
-                  explvar = NULL)
+  hj_ridge <-
+    list(
+      eigenvalues = NULL,
+      explvar = NULL,
+      loadings = NULL,
+      coord_ind = NULL,
+      coord_var = NULL
+      )
 
   # Sample's tags
-  ind_tag = rownames(X)
+  ind_tag <- rownames(X)
 
   # Variable's tags
-  vec_tag = colnames(X)
+  vec_tag <- colnames(X)
 
-  # Transform the data
-  if (transform_data == 'center') {
-    X = scale(as.matrix(X), center = TRUE)
+  #### 1. Transform data ####
+  if (Transform.Data == 'center') {
+    X <-
+      scale(
+        as.matrix(X),
+        center = TRUE,
+        scale = FALSE
+      )
   }
 
-  if (transform_data == 'scale') {
-    X = scale(as.matrix(X), scale = TRUE)
+  if (Transform.Data == 'scale') {
+    X <-
+      scale(
+        as.matrix(X),
+        center = TRUE,
+        scale = TRUE
+      )
   }
 
-  # SVD decomposition
-  svd = svd(X)
-  U = svd$u
-  d = svd$d
-  D = diag(d)
-  V = svd$v/(1+lambda)
+  if (Transform.Data == 'none') {
+    X <- as.matrix(X)
+  }
 
-  # Components' names
-  PCs = vector()
+  #### 2. SVD decomposition ####
+  svd <- svd(X)
+  U <- svd$u
+  d <- svd$d
+  D <- diag(d)
+  V <- svd$v/(1+Lambda)
+
+  #### 3. Components calculated ####
+  PCs <- vector()
   for (i in 1:dim(V)[2]){
     npc = vector()
     npc = paste(c("PC",i), collapse = "")
     PCs = cbind(PCs, npc)
   }
 
-  # Objects returned by the function
-  hj_ridge$loadings = V
-  row.names(hj_ridge$loadings) = vec_tag #update row
-  colnames(hj_ridge$loadings) = PCs #update col
+  ##### 4. Output ####
+
+  #### >Loagings ####
+  hj_ridge$loadings <- V
+  row.names(hj_ridge$loadings) <- vec_tag
+  colnames(hj_ridge$loadings) <- PCs
+
+
+  #### >Row coordinates ####
   hj_ridge$coord_ind = X%*%V
-  colnames(hj_ridge$coord_ind) = PCs #update col
+  colnames(hj_ridge$coord_ind) = PCs
+
+  #### >Column coordinates ####
   hj_ridge$coord_var = t(D%*%t(V))
-  row.names(hj_ridge$coord_var) = vec_tag #update row
-  colnames(hj_ridge$coord_var) = PCs #update col
-  QR = qr(hj_ridge$coord_ind) #Descomposicion QR
-  R = qr.R( QR )
-  hj_ridge$eigenvalues = round(abs(diag(R)), digits=4) #AUTOVALORES
-  vari=hj_ridge$eigenvalues^2
-  hj_ridge$explvar = round(vari/sum(vari), digits = 4)*100 #VARIANZA EXPLICADA
+  row.names(hj_ridge$coord_var) = vec_tag
+  colnames(hj_ridge$coord_var) = PCs
 
-  # Limits of the plot
-  xmin = min(hj_ridge$coord_ind[,1], hj_ridge$coord_var[,1]) - 0.3
-  xmax = max(hj_ridge$coord_ind[,1], hj_ridge$coord_var[,1]) + 0.3
-  ymin = min(hj_ridge$coord_ind[,2], hj_ridge$coord_var[,2]) - 0.3
-  ymax = max(hj_ridge$coord_ind[,2], hj_ridge$coord_var[,2]) + 0.3
+  #### >Eigenvalues ####
+  QR <- qr(hj_ridge$coord_ind) # QR decomposition
+  R <- diag(qr.R( QR ))
+  hj_ridge$eigenvalues <- as.vector(round(abs(R), digits=4))
+  names(hj_ridge$eigenvalues) <- PCs
 
-  # x and y labels
-  var1 = paste(c("(", hj_ridge$explvar[1], "%", ")"), collapse = "")
-  axis1 = paste(PCs[1], var1)
-  var2 = paste(c("(", hj_ridge$explvar[2], "%", ")"), collapse = "")
-  axis2 = paste(PCs[2], var2)
-
-  # Plot
-  plot(hj_ridge$coord_ind, col = "green4",
-       xlab = axis1, ylab = axis2, pch = 20,
-       xlim = c(xmin, xmax), ylim = c(ymin, ymax))
-  arrows(0, 0, hj_ridge$coord_var[,1], hj_ridge$coord_var[,2],
-         col="blue", length = 0.1, angle = 20, lwd=2)
-  abline(h = 0, v = 0, col="gray30", lwd=1, lty = 2)
-
-  # Print sample's tags (if required)
-  if (ind_name == TRUE){
-    i=1
-    for (tag in ind_tag){
-      text(hj_ridge$coord_ind[i, 1]+0.15, hj_ridge$coord_ind[i, 2]+0.15,
-           labels = ind_tag[i], col = "green4", cex = 0.65,font=2)
-      i=i+1
-    }
-  }
-
-  # Print varables' tags (if required)
-  if(vec_name == TRUE){
-    i=1
-    for(tag in vec_tag){
-      x = hj_ridge$coord_var[i, 1]
-      y = hj_ridge$coord_var[i, 2]
-      if (x > 0){
-        text(x, y, labels = vec_tag[i], col = "blue",
-             cex = 0.75, pos = 4,font=2)
-      } else{
-        text(x, y, labels = vec_tag[i], col = "blue",
-             cex = 0.75, pos = 2, font=2)
-      }
-      i=i+1
-    }
-  }
+  #### > Explained variance ####
+  vari <- hj_ridge$eigenvalues^2
+  hj_ridge$explvar <- round(vari/sum(vari), digits = 4)*100 #VARIANZA EXPLICADA
+  names(hj_ridge$explvar) <- PCs
 
   hj_ridge
 

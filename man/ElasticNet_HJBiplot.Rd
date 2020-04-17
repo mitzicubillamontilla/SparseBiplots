@@ -4,27 +4,20 @@
 \alias{ElasticNet_HJBiplot}
 \title{Elastic Net HJ Biplot}
 \usage{
-ElasticNet_HJBiplot(X, lambda = 1e-04, alpha = 1e-04, transform_data = 'scale',
-    ind_name = FALSE, vec_name = TRUE)
+ElasticNet_HJBiplot(X, Lambda = 1e-04, Alpha = 1e-04, Transform.Data = 'scale')
 }
 \arguments{
 \item{X}{array_like; \cr
 A data frame with the information to be analyzed}
 
-\item{lambda}{float; \cr
+\item{Lambda}{float; \cr
 Tuning parameter of the LASSO penalty. Higher values lead to sparser components.}
 
-\item{alpha}{float; \cr
+\item{Alpha}{float; \cr
 Tuning parameter of the Ridge shrinkage}
 
-\item{transform_data}{character; \cr
+\item{Transform.Data}{character; \cr
 A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" or "scale". For default is "scale".}
-
-\item{ind_name}{bool; \cr
-Logical value, if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.}
-
-\item{vec_name}{bool; \cr
-Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.}
 }
 \value{
 \code{ElasticNet_HJBiplot} returns a list containing the following components:
@@ -59,8 +52,7 @@ This function is a generalization of the Ridge regularization method and the LAS
 Algorithm used to perform automatic selection of variables and continuous contraction simultaneously. With this method, the model obtained is simpler and more interpretable. It is a particularly useful method when the number of variables is much greater than the number of observations.
 }
 \examples{
- data(mtcars)
- ElasticNet_HJBiplot(mtcars, 0.2, 0.1, transform_data = 'scale', ind_name=TRUE)
+ ElasticNet_HJBiplot(mtcars, Lambda = 0.2, Alpha = 0.1, Transform.Data = 'scale')
 
 }
 \references{
@@ -70,6 +62,9 @@ Algorithm used to perform automatic selection of variables and continuous contra
  \item Zou, H., & Hastie, T. (2005). Regularization and variable selection via the elastic net. Journal of the royal statistical society: series B (statistical methodology), 67(2), 301-320.
 }
 }
+\seealso{
+\code{\link{spca}}, \code{\link{Plot_Biplot}}
+}
 \author{
-Mitzi Cubilla-Montilla, Carlos Torres, Ana Belen Nieto Librero and Purificacion Galindo Villardon
+Mitzi Cubilla-Montilla, Carlos Torres-Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 }
