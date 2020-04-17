@@ -12,10 +12,11 @@ This package provides functions to perform the HJ-Biplot (Galindo, 1986) and mod
 * `Ridge_HJBiplot`: performs the HJ-Biplot introducing Ridge penalty.
 * `LASSO_HJBiplot`: performs the HJ-Biplot introducing LASSO penalty.
 * `ElasticNet_HJBiplot`: performs the HJ-Biplot introducing Elastic Net penalty. For this use the [spca](https://github.com/erichson/spca) package.
+* `Plot_Biplot`: Create the plot of the results obtained with any of the above functions. 
 
 ## Installation
 
-* Install *SparseBiplots* from **CRAN**:
+* Install *SparseBiplots* from **CRAN** (earlier version):
 ```R
 install.packages("SparseBiplots")
 ```
@@ -51,9 +52,13 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ```R
 library("SparseBiplots")
-HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
+hj_mtcars <- HJBiplot(mtcars, transform_data = 'scale')
 ```
+It fit the HJ-Biplot on the R data `mtcars` returning a list that contains the results of the fiting (`hj_mtcars`). To create the plot use the function `Plot_Biplot` over the list obtained. 
 
+```R
+Plot_Biplot(hj.biplot, ind.name = TRUE)
+```
 <img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJBiplot_mtcars.png" width="750">
 
 ## References
