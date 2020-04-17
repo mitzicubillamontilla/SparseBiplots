@@ -22,12 +22,12 @@ X <- X +
 # Test HJBiplot output
 #--------------------------------------------------------------------
 
-out <- Ridge_HJBiplot(X, lambda = 0.3) # HJ-Biplot
+out <- Ridge_HJBiplot(X, Lambda = 0.3) # HJ-Biplot
 
 test_that("1. Test output", {
   expect_identical(
     names(out),
-    c("loadings", "coord_ind", "coord_var", "eigenvalues", "explvar")
+    c("eigenvalues", "explvar", "loadings", "coord_ind", "coord_var")
     )
   })
 
@@ -94,6 +94,10 @@ test_that("5. Test for eigenvalues", {
     "double"
   )
   expect_identical(
+    class(out$eigenvalues),
+    "numeric"
+  )
+  expect_identical(
     length(out$eigenvalues),
     ncol(X)
     )
@@ -103,6 +107,10 @@ test_that("6. Test for explained variance", {
   expect_identical(
     typeof(out$explvar),
     "double"
+  )
+  expect_identical(
+    class(out$explvar),
+    "numeric"
   )
   expect_identical(
     length(out$explvar),

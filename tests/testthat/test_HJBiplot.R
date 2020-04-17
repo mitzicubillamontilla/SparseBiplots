@@ -28,7 +28,7 @@ out <- HJBiplot(X) # HJ-Biplot
 test_that("1. Test output", {
   expect_identical(
     names(out),
-    c("loadings", "coord_ind", "coord_var", "eigenvalues", "explvar")
+    c("eigenvalues", "explvar", "loadings", "coord_ind", "coord_var")
     )
   })
 
@@ -96,7 +96,7 @@ test_that("5. Test for eigenvalues", {
   )
   expect_identical(
     class(out$eigenvalues),
-    "matrix"
+    "numeric"
   )
   expect_identical(
     length(out$eigenvalues),
@@ -111,7 +111,7 @@ test_that("6. Test for explained variance", {
   )
   expect_identical(
     class(out$explvar),
-    "matrix"
+    "numeric"
   )
   expect_identical(
     length(out$explvar),

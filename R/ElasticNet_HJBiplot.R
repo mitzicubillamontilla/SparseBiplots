@@ -2,26 +2,19 @@
 #'
 #' @description This function is a generalization of the Ridge regularization method and the LASSO penalty. Realizes the representation of the SPARSE HJ Biplot through a combination of LASSO and Ridge, on the data matrix. This means that with this function you can eliminate weak variables completely as with the LASSO regularization or contract them to zero as in Ridge.
 #'
-#' @usage ElasticNet_HJBiplot(X, lambda = 1e-04, alpha = 1e-04, transform_data = 'scale',
-#'     ind_name = FALSE, vec_name = TRUE)
+#' @usage ElasticNet_HJBiplot(X, Lambda = 1e-04, Alpha = 1e-04, Transform.Data = 'scale')
 #'
 #' @param X array_like; \cr
 #'     A data frame with the information to be analyzed
 #'
-#' @param lambda  float; \cr
-#'     Tuning parameter of the LASSO penalty. Higher values lead to sparser components.
-#'
-#' @param alpha  float; \cr
-#'     Tuning parameter of the Ridge shrinkage
-#'
-#' @param transform_data character; \cr
+#' @param Transform.Data character; \cr
 #'    A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" or "scale". For default is "scale".
 #'
-#' @param ind_name bool; \cr
-#'     Logical value, if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.
+#' @param Lambda  float; \cr
+#'     Tuning parameter of the LASSO penalty. Higher values lead to sparser components.
 #'
-#' @param vec_name bool; \cr
-#'     Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.
+#' @param Alpha  float; \cr
+#'     Tuning parameter of the Ridge shrinkage
 #'
 #' @details Algorithm used to perform automatic selection of variables and continuous contraction simultaneously. With this method, the model obtained is simpler and more interpretable. It is a particularly useful method when the number of variables is much greater than the number of observations.
 #'
@@ -59,129 +52,125 @@
 #'  \item Zou, H., & Hastie, T. (2005). Regularization and variable selection via the elastic net. Journal of the royal statistical society: series B (statistical methodology), 67(2), 301-320.
 #' }
 #'
+#' @seealso \code{\link{spca}}, \code{\link{Plot_Biplot}}
+#'
 #' @examples
-#'  data(mtcars)
-#'  ElasticNet_HJBiplot(mtcars, 0.2, 0.1, transform_data = 'scale', ind_name=TRUE)
+#'  ElasticNet_HJBiplot(mtcars, Lambda = 0.2, Alpha = 0.1, Transform.Data = 'scale')
 #'
 #' @import sparsepca
 #'
-#' @importFrom graphics abline arrows plot text
-#'
 #' @export
 
-ElasticNet_HJBiplot = function(X, lambda = 1e-04, alpha = 1e-04, transform_data = 'scale',
-                               ind_name = FALSE, vec_name = TRUE) {
+ElasticNet_HJBiplot <- function(X, Lambda = 1e-04, Alpha = 1e-04, Transform.Data = 'scale') {
 
   # List of objects that the function returns
-  hj_elasticnet = list(loadings = NULL,
-                       n_ceros = NULL,
-                       eigenvalues = NULL,
-                       explvar = NULL,
-                       coord_ind = NULL,
-                       coord_var = NULL)
+  hj_elasticnet <-
+    list(
+      eigenvalues = NULL,
+      explvar = NULL,
+      loadings = NULL,
+      n_ceros = NULL,
+      coord_ind = NULL,
+      coord_var = NULL
+      )
 
   # Sample's tags
-  ind_tag = rownames(X)
+  ind_tag <- rownames(X)
 
   # Variable's tags
-  vec_tag = colnames(X)
+  vec_tag <- colnames(X)
 
-  # Transfomr the data
-  if (transform_data == 'scale') {
-    X = scale(as.matrix(X), scale = TRUE)
+
+  #### 1. Transform data ####
+  if (Transform.Data == 'center') {
+    X <-
+      scale(
+        as.matrix(X),
+        center = TRUE,
+        scale = FALSE
+      )
   }
-  if (transform_data == 'center') {
-    X = scale(as.matrix(X), center = TRUE)
+
+  if (Transform.Data == 'scale') {
+    X <-
+      scale(
+        as.matrix(X),
+        center = TRUE,
+        scale = TRUE
+      )
   }
 
-  # SVD decomposition
-  svd = svd(X)
-  U = svd$u
-  d = svd$d
-  D = diag(d)
-  V = svd$v
+  if (Transform.Data == 'none') {
+    X <- as.matrix(X)
+  }
 
-  # Components' names
-  PCs = vector()
+
+  #### 2. SVD decomposition ####
+  svd <- svd(X)
+  U <- svd$u
+  d <- svd$d
+  D <- diag(d)
+  V <- svd$v
+
+
+  #### 3. Components calculated ####
+  PCs <- vector()
   for (i in 1:dim(V)[2]){
-    npc = vector()
-    npc = paste(c("PC",i), collapse = "")
-    PCs = cbind(PCs, npc)
+    npc <- vector()
+    npc <- paste(c("PC",i), collapse = "")
+    PCs <- cbind(PCs, npc)
   }
 
-  # Penalize the weights by the penalization
-  V_L=V
-  spca=spca(X, k=dim(X)[2], alpha = alpha, beta = lambda, scale = FALSE,
-            verbose = FALSE)
-  V_L[,c(1:dim(spca$loadings)[2])] = spca$loadings
-  rownames(V_L)=colnames(X)
 
-  #Number of null weights by each component
-  n_ceros = vector()
+  #### 4. Introduce sparsity ####
+  V_L <- V
+  spca <-
+    spca(
+      X,
+      k=dim(X)[2],
+      alpha = Alpha,
+      beta = Lambda,
+      scale = FALSE,
+      verbose = FALSE
+      )
+  V_L[, c(1:dim(spca$loadings)[2])] <- spca$loadings
+  rownames(V_L) <- colnames(X)
+
+
+  #### 5. Sparsity magnitude ####
+  n_ceros <- vector()
   for (i in 1:ncol(V_L)){
-    n_ceros = cbind(n_ceros, sum((V_L[,i] == 0) * 1))
+    n_ceros <- cbind(n_ceros, sum((V_L[,i] == 0) * 1))
   }
-  colnames(n_ceros) = PCs[, 1:dim(n_ceros)[2]]
+  colnames(n_ceros) <- PCs[, 1:dim(n_ceros)[2]]
 
-  # Objects returned by the function
-  hj_elasticnet$loadings = V_L #CARGAS
-  row.names(hj_elasticnet$loadings) = vec_tag #update row
-  colnames(hj_elasticnet$loadings) = PCs #update col
-  hj_elasticnet$n_ceros = n_ceros #N CEROS
-  hj_elasticnet$coord_ind = X%*%hj_elasticnet$loadings #INDIVIDUOS
-  hj_elasticnet$coord_var = t(D%*%t(hj_elasticnet$loadings)) #VARIABLES
-  colnames(hj_elasticnet$coord_var) = PCs[, 1:dim(hj_elasticnet$coord_var)[2]] #update
-  QR = qr(hj_elasticnet$coord_ind) #Descomposicion QR
-  R = qr.R( QR )
-  hj_elasticnet$eigenvalues = round(abs(diag(R)),digits=4) #AUTOVALORES
-  vari=hj_elasticnet$eigenvalues^2
-  hj_elasticnet$explvar = round(vari/sum(vari), digits = 4)*100 #VARIANZA EXPLICADA
 
-  # Limits of the plot
-  xmin = min(hj_elasticnet$coord_ind[,1], hj_elasticnet$coord_var[,1]) - 0.5
-  xmax = max(hj_elasticnet$coord_ind[,1], hj_elasticnet$coord_var[,1]) + 0.5
-  ymin = min(hj_elasticnet$coord_ind[,2], hj_elasticnet$coord_var[,2]) - 0.5
-  ymax = max(hj_elasticnet$coord_ind[,2], hj_elasticnet$coord_var[,2]) + 0.5
+  ##### 6. Output ####
 
-  # x and y labels
-  var1 = paste(c("(", hj_elasticnet$explvar[1], "%", ")"), collapse = "")
-  axis1 = paste(PCs[1], var1)
-  var2 = paste(c("(", hj_elasticnet$explvar[2], "%", ")"), collapse = "")
-  axis2 = paste(PCs[2], var2)
+  #### >Loagings ####
+  hj_elasticnet$loadings <- V_L
+  row.names(hj_elasticnet$loadings) <- vec_tag #update row
+  colnames(hj_elasticnet$loadings) <- PCs #update col
 
-  # Plot
-  plot(hj_elasticnet$coord_ind, col = "darkgreen",
-       xlab = axis1, ylab = axis2, pch = 20,
-       xlim = c(xmin, xmax), ylim = c(ymin, ymax))
-  arrows(0, 0, hj_elasticnet$coord_var[,1], hj_elasticnet$coord_var[,2], col="red",length = 0.1, angle = 20)
-  abline(h = 0, v = 0, col="gray30", lwd=1, lty = 2)
+  #### > Sparsity magnitude ####
+  hj_elasticnet$n_ceros <- n_ceros
 
-  # Print sample's tags (if required)
-  if (ind_name == TRUE){
-    i=1
-    for (tag in ind_tag){
-      text(hj_elasticnet$coord_ind[i, 1]+0.1, hj_elasticnet$coord_ind[i, 2]+0.1,
-           labels = ind_tag[i], col = "darkgreen", cex = 0.75, offset = 0.01, font=2)
-      i=i+1
-    }
-  }
+  #### >Row coordinates ####
+  hj_elasticnet$coord_ind <- X %*% hj_elasticnet$loadings
 
-  # Print variables' tags (if required)
-  if(vec_name == TRUE){
-    i=1
-    for(tag in vec_tag){
-      x = hj_elasticnet$coord_var[i, 1]
-      y = hj_elasticnet$coord_var[i, 2]
-      if (x > 0){
-        text(x, y, labels = vec_tag[i], col = "red",
-             cex = 0.75, pos = 4, offset = 0.1, font=2)
-      } else{
-        text(x, y, labels = vec_tag[i], col = "red",
-             cex = 0.75, pos = 2, offset = 0.1,font=2)
-      }
-      i=i+1
-    }
-  }
+  #### >Column coordinates ####
+  hj_elasticnet$coord_var <- t(D %*% t(hj_elasticnet$loadings))
+  colnames(hj_elasticnet$coord_var) <- PCs[, 1:dim(hj_elasticnet$coord_var)[2]]
+
+  #### >Eigenvalues ####
+  QR <- qr(hj_elasticnet$coord_ind) # QR decomposition
+  R <- qr.R( QR )
+  hj_elasticnet$eigenvalues <- round(abs(diag(R)),digits=4)
+
+  #### > Explained variance ####
+  vari <- hj_elasticnet$eigenvalues^2
+  hj_elasticnet$explvar <- round(vari/sum(vari), digits = 4)*100
+
 
   hj_elasticnet
 
