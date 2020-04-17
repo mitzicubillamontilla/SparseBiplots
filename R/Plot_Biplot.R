@@ -140,7 +140,7 @@ Plot_Biplot <- function(X, groups = NULL, ind.name = FALSE, vec.name = TRUE,
     scale_colour_manual(values = point.col)
 
   #### >Vector names ####
-  if(vec.name == FALSE){
+  if(vec.name == TRUE){
     biplot <-
     biplot +
     geom_text_repel(
