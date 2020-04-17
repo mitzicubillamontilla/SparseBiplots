@@ -54,7 +54,7 @@ library("SparseBiplots")
 HJBiplot(mtcars, transform_data = 'scale', ind_name  = TRUE)
 ```
 
-<img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJ_Example.png" width="750">
+<img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJBiplot_mtcars.png" width="750">
 
 ## References
 
