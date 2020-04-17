@@ -135,4 +135,4 @@ HJBiplot <- function(X, Transform.Data = 'scale'){
 
   hjb
 
-}
+  }

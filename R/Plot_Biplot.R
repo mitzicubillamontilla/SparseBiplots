@@ -2,16 +2,18 @@
 #'
 #' @description \code{Plot_Biplot} initializes a ggplot2-based visualization of the caracteristics presented in the data analized by the Biplot selected.
 #'
-#' @usage Plot_Biplot(X, ind.name = FALSE, vec.name = TRUE, point.col = "red", arrow.col = "black",
-#' axis = c(1,2), angle.vec = TRUE)
+#' @usage Plot_Biplot(X, groups = NULL, ind.name = FALSE, vec.name = TRUE,
+#' point.col = "red", arrow.col = "black", axis = c(1,2), angle.vec = TRUE)
 #'
 #' @param X List containing the output of one of the functions of the package.
+#'
+#' @param groups Factor wich contains groups to consider in plot. NULL groups considered by default.
 #'
 #' @param ind.name Logical value, if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.
 #'
 #' @param vec.name Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.
 #'
-#' @param point.col Character indicating the color of the points.
+#' @param point.col Character indicating the color of the points. If groups is not NULL it have to be a vector with the same number of groups factors
 #'
 #' @param arrow.col Character indicating the color of the arrows.
 #'
