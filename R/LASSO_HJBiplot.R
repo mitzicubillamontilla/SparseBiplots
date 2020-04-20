@@ -141,7 +141,7 @@ LASSO_HJBiplot <- function(X, Lambda, Transform.Data = 'scale', Operator = 'Hard
   row.names(hj_lasso$loadings) <- vec_tag
   colnames(hj_lasso$loadings) <- PCs
 
-  #### > Sparsity magnitude ####
+  #### >Sparsity magnitude ####
   hj_lasso$n_ceros <- n_ceros
 
   #### >Row coordinates ####
@@ -155,6 +155,8 @@ LASSO_HJBiplot <- function(X, Lambda, Transform.Data = 'scale', Operator = 'Hard
   QR <- qr(hj_lasso$coord_ind) #Descomposicion QR
   R <- qr.R( QR )
   hj_lasso$eigenvalues <- round(abs(diag(R)),digits=4)
+  hj_lasso$eigenvalues <- as.vector(hj_lasso$eigenvalues)
+  names(hj_lasso$eigenvalues) <- PCs
 
   #### > Explained variance ####
   vari <- hj_lasso$eigenvalues^2

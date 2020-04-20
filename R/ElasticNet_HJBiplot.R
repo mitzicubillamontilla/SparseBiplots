@@ -166,6 +166,8 @@ ElasticNet_HJBiplot <- function(X, Lambda = 1e-04, Alpha = 1e-04, Transform.Data
   QR <- qr(hj_elasticnet$coord_ind) # QR decomposition
   R <- qr.R( QR )
   hj_elasticnet$eigenvalues <- round(abs(diag(R)),digits=4)
+  hj_elasticnet$eigenvalues <- as.vector(hj_elasticnet$eigenvalues)
+  names(hj_elasticnet$eigenvalues) <- PCs
 
   #### > Explained variance ####
   vari <- hj_elasticnet$eigenvalues^2
