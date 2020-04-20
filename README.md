@@ -50,12 +50,13 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ### Plot_Biplot parameters
 * `X`: list containing the output of one of the functions of the package. 
-* `groups`: factor wich contains groups to consider in plot. By default no one group are considered.
+* `axis`: Vector with lenght 2 which contains the axis ploted in x and y axis.
+* `color`: points colors. It can be a character indicating the color of all the points or a factor to use different colors.
+* `shape`: points shapes. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.
+* `size`: numeric value indicating the size of points.
 * `ind.name`: logical name indicating if prints the row names. 
-* `vec.name`: logical name indicating if prints the column names. 
-* `point.col`: color of the points. If groups are considered, this must be a vector of length equal to the number of groups considered
 * `arrow.col`: color of the arrows. 
-* `axis`: vector with lenght 2 which contains the axis ploted in x and y axis. 
+* `vec.name`: logical name indicating if prints the column names. 
 * `angle.vec`: logical name indicating if print the vector names with orentation of the angle of the vector. 
 
 
@@ -63,14 +64,14 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ```R
 library("SparseBiplots")
-hj_mtcars <- HJBiplot(mtcars, transform_data = 'scale')
+hj.biplot <- HJBiplot(mtcars, Transform.Data = 'scale')
 ```
 It fit the HJ-Biplot on the R data `mtcars` returning a list that contains the results of the fiting (`hj_mtcars`). To create the plot use the function `Plot_Biplot` over the list obtained. 
 
 ```R
 Plot_Biplot(hj.biplot, ind.name = TRUE)
 ```
-<img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJBiplot_mtcars.png" width="750">
+<img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJBiplot_example.png" width="750">
 
 ## References
 
