@@ -18,10 +18,8 @@ Depends:
   ggplot2
 Imports: 
   sparsepca, 
-  ggrepel
-Suggest: 
+  ggrepel, 
   testthat
 RoxygenNote: 7.1.0
 NeedsCompilation: no
-Suggests: 
-    testthat
+  

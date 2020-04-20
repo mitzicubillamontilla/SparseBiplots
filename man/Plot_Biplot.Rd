@@ -4,25 +4,26 @@
 \alias{Plot_Biplot}
 \title{Plotting Biplot}
 \usage{
-Plot_Biplot(X, groups = NULL, ind.name = FALSE, vec.name = TRUE,
-point.col = "red", arrow.col = "black", axis = c(1,2), angle.vec = TRUE)
+Plot_Biplot(X, axis = c(1,2),
+  color = "red", shape = 20, size = 2, ind.name = FALSE,
+  arrow.col = "black", vec.name = TRUE, angle.vec = FALSE)
 }
 \arguments{
 \item{X}{List containing the output of one of the functions of the package.}
 
-\item{groups}{Factor wich contains groups to consider in plot. NULL groups considered by default.}
+\item{axis}{Vector with lenght 2 which contains the axis ploted in x and y axis.}
+
+\item{color}{Points colors. It can be a character indicating the color of all the points or a factor to use different colors.}
+
+\item{shape}{Points shape. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.}
+
+\item{size}{numeric value indicating the size of points.}
 
 \item{ind.name}{Logical value, if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.}
 
-\item{vec.name}{Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.}
-
-\item{point.col}{Character indicating the color of the points. If groups is not NULL it have to be a vector with the same number of groups factors}
-
 \item{arrow.col}{Character indicating the color of the arrows.}
 
-\item{size}{size of the point.}
-
-\item{axis}{Vector with lenght 2 which contains the axis ploted in x and y axis.}
+\item{vec.name}{Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.}
 
 \item{angle.vec}{Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.}
 }
