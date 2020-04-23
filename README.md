@@ -32,7 +32,7 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 ### Parameters
 
 * `X`: data frame which provides the data to be analyzed. All the variables must be numeric.
-* `Transform_data`: character indicating whether the columns have to be scaled or centered. Allowed values are: `"center"` and `"scale"` (default).
+* `Transform.Data`: character indicating whether the columns have to be scaled or centered. Allowed values are: `"center"` and `"scale"` (default).
 * `lambda`: tuning parameter for each penalty. In Elastic Net it refers to LASSO penalty.
 * `àlpha`: tuning parameter of the Ridge shrinkage (just allowed with Elastic Net penalty).
 * `operator`: operator used to solve the norm L1 (just allowed with LASSO penalty). Allowed values are: `'Hard-Thresholding'` and `'Soft-Thresholding'`. 
