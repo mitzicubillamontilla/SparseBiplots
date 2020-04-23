@@ -57,8 +57,8 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 * `ind.label`: logical name indicating if prints the row names. 
 * `ind.label.size`: numeric value indicating the size of the label of points.
 * `arrow.col`: color of the arrows. 
-* `vec.name`: logical name indicating if prints the column names. 
-* `angle.vec`: logical name indicating if print the vector names with orentation of the angle of the vector. 
+* `vec.label`: logical name indicating if prints the column names. 
+* `angle.vec.label`: logical name indicating if print the vector names with orentation of the angle of the vector. 
 
 
 ## Example

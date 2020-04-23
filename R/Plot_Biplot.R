@@ -3,9 +3,9 @@
 #' @description \code{Plot_Biplot} initializes a ggplot2-based visualization of the caracteristics presented in the data analized by the Biplot selected.
 #'
 #' @usage Plot_Biplot(X, axis = c(1,2),
-#'   color = "red", shape = 20, size = 4,
-#'   ind.label = FALSE, ind.label.size = 4,
-#'   arrow.col = "black", vec.name = TRUE, angle.vec = FALSE)
+#'  color = "red", shape = 19, size = 2,
+#'  ind.label = FALSE, ind.label.size = 4,
+#'  arrow.col = "black", vec.label = TRUE, angle.vec.label = FALSE)
 #'
 #' @param X List containing the output of one of the functions of the package.
 #'
@@ -23,9 +23,9 @@
 #'
 #' @param arrow.col Character indicating the color of the arrows.
 #'
-#' @param vec.name Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.
+#' @param vec.label Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.
 #'
-#' @param angle.vec Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.
+#' @param angle.vec.label Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.
 #'
 #' @return Return a \code{\link{ggplot2}} object.
 #'
@@ -46,7 +46,7 @@
 Plot_Biplot <- function(X, axis = c(1,2),
                         color = "red", shape = 19, size = 2,
                         ind.label = FALSE, ind.label.size = 4,
-                        arrow.col = "black", vec.name = TRUE, angle.vec = FALSE
+                        arrow.col = "black", vec.label = TRUE, angle.vec.label = FALSE
                         ){
 
   #### 1. Params ####
@@ -169,14 +169,14 @@ Plot_Biplot <- function(X, axis = c(1,2),
 
   #### >>Angle names ####
   ifelse(
-    vec.name == TRUE & angle.vec == TRUE,
+    vec.label == TRUE & angle.vec.label == TRUE,
     #Angulo para los nombres de las variables
     angle <- atan(new_coord_var[, y.var] / new_coord_var[, x.var]) * 360 / (2 * pi),
     angle <- rep(0, nrow(new_coord_var))
   )
 
   #### >>Vector names ####
-  if(vec.name == TRUE){
+  if(vec.label == TRUE){
     biplot <-
     biplot +
     geom_text_repel(

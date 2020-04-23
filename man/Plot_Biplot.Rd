@@ -5,9 +5,9 @@
 \title{Plotting Biplot}
 \usage{
 Plot_Biplot(X, axis = c(1,2),
-  color = "red", shape = 20, size = 4,
-  ind.label = FALSE, ind.label.size = 4,
-  arrow.col = "black", vec.name = TRUE, angle.vec = FALSE)
+ color = "red", shape = 19, size = 2,
+ ind.label = FALSE, ind.label.size = 4,
+ arrow.col = "black", vec.label = TRUE, angle.vec.label = FALSE)
 }
 \arguments{
 \item{X}{List containing the output of one of the functions of the package.}
@@ -26,9 +26,9 @@ Plot_Biplot(X, axis = c(1,2),
 
 \item{arrow.col}{Character indicating the color of the arrows.}
 
-\item{vec.name}{Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.}
+\item{vec.label}{Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.}
 
-\item{angle.vec}{Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.}
+\item{angle.vec.label}{Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.}
 }
 \value{
 Return a \code{\link{ggplot2}} object.
