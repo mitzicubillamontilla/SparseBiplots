@@ -3,7 +3,8 @@
 #' @description \code{Plot_Biplot} initializes a ggplot2-based visualization of the caracteristics presented in the data analized by the Biplot selected.
 #'
 #' @usage Plot_Biplot(X, axis = c(1,2),
-#'   color = "red", shape = 20, size = 2, ind.name = FALSE,
+#'   color = "red", shape = 20, size = 4,
+#'   ind.label = FALSE, ind.label.size = 4,
 #'   arrow.col = "black", vec.name = TRUE, angle.vec = FALSE)
 #'
 #' @param X List containing the output of one of the functions of the package.
@@ -16,7 +17,9 @@
 #'
 #' @param size numeric value indicating the size of points.
 #'
-#' @param ind.name Logical value, if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.
+#' @param ind.label Logical value, if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.
+#'
+#' @param ind.label.size numeric value indicating the size of the labels of points.
 #'
 #' @param arrow.col Character indicating the color of the arrows.
 #'
@@ -32,7 +35,7 @@
 #'
 #' @examples
 #' hj.biplot <- HJBiplot(mtcars, Transform.Data = 'scale')
-#' Plot_Biplot(hj.biplot, ind.name = TRUE)
+#' Plot_Biplot(hj.biplot, ind.label = TRUE)
 #'
 #' @import ggplot2
 #'
@@ -41,7 +44,8 @@
 #' @export
 
 Plot_Biplot <- function(X, axis = c(1,2),
-                        color = "red", shape = 20, size = 2, ind.name = FALSE,
+                        color = "red", shape = 19, size = 2,
+                        ind.label = FALSE, ind.label.size = 4,
                         arrow.col = "black", vec.name = TRUE, angle.vec = FALSE
                         ){
 
@@ -112,7 +116,7 @@ Plot_Biplot <- function(X, axis = c(1,2),
       )
 
   #### >>Point names ####
-  if (ind.name == TRUE){
+  if (ind.label == TRUE){
     biplot <-
       biplot +
       geom_text_repel(
@@ -120,7 +124,8 @@ Plot_Biplot <- function(X, axis = c(1,2),
           x = X$coord_ind[, x.var],
           y = X$coord_ind[, y.var],
           label = rownames(X$coord_ind),
-          colour = color)
+          colour = color),
+        size = ind.label.size
       )
   }
 

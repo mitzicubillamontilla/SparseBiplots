@@ -54,7 +54,8 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 * `color`: points colors. It can be a character indicating the color of all the points or a factor to use different colors.
 * `shape`: points shapes. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.
 * `size`: numeric value indicating the size of points.
-* `ind.name`: logical name indicating if prints the row names. 
+* `ind.label`: logical name indicating if prints the row names. 
+* `ind.label.size`: numeric value indicating the size of the label of points.
 * `arrow.col`: color of the arrows. 
 * `vec.name`: logical name indicating if prints the column names. 
 * `angle.vec`: logical name indicating if print the vector names with orentation of the angle of the vector. 
@@ -69,7 +70,7 @@ hj.biplot <- HJBiplot(mtcars, Transform.Data = 'scale')
 It fit the HJ-Biplot on the R data `mtcars` returning a list that contains the results of the fiting (`hj_mtcars`). To create the plot use the function `Plot_Biplot` over the list obtained. 
 
 ```R
-Plot_Biplot(hj.biplot, ind.name = TRUE)
+Plot_Biplot(hj.biplot, ind.label = TRUE)
 ```
 <img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJBiplot_example.png" width="750">
 

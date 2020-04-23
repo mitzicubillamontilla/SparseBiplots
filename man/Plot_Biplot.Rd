@@ -5,7 +5,8 @@
 \title{Plotting Biplot}
 \usage{
 Plot_Biplot(X, axis = c(1,2),
-  color = "red", shape = 20, size = 2, ind.name = FALSE,
+  color = "red", shape = 20, size = 4,
+  ind.label = FALSE, ind.label.size = 4,
   arrow.col = "black", vec.name = TRUE, angle.vec = FALSE)
 }
 \arguments{
@@ -19,7 +20,9 @@ Plot_Biplot(X, axis = c(1,2),
 
 \item{size}{numeric value indicating the size of points.}
 
-\item{ind.name}{Logical value, if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.}
+\item{ind.label}{Logical value, if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.}
+
+\item{ind.label.size}{numeric value indicating the size of the labels of points.}
 
 \item{arrow.col}{Character indicating the color of the arrows.}
 
@@ -35,7 +38,7 @@ Return a \code{\link{ggplot2}} object.
 }
 \examples{
 hj.biplot <- HJBiplot(mtcars, Transform.Data = 'scale')
-Plot_Biplot(hj.biplot, ind.name = TRUE)
+Plot_Biplot(hj.biplot, ind.label = TRUE)
 
 }
 \seealso{
