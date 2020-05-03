@@ -111,7 +111,7 @@ LASSO_HJBiplot <- function(X, Lambda, Transform.Data = 'scale', Operator = 'Hard
   PCs <- vector()
   for (i in 1:dim(V)[2]){
     npc <- vector()
-    npc <- paste(c("PC",i), collapse = "")
+    npc <- paste("Dim",i)
     PCs <- cbind(PCs, npc)
   }
 

@@ -117,7 +117,7 @@ ElasticNet_HJBiplot <- function(X, Lambda = 1e-04, Alpha = 1e-04, Transform.Data
   PCs <- vector()
   for (i in 1:dim(V)[2]){
     npc <- vector()
-    npc <- paste(c("PC",i), collapse = "")
+    npc <- paste("Dim",i)
     PCs <- cbind(PCs, npc)
   }
 

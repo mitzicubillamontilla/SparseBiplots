@@ -4,31 +4,41 @@
 \alias{Plot_Biplot}
 \title{Plotting Biplot}
 \usage{
-Plot_Biplot(X, axis = c(1,2),
- color = "red", shape = 19, size = 2,
+Plot_Biplot(X, axis = c(1,2), hide = "none",
+ label = "auto", ind.shape = 19,
+ ind.color = "red", ind.size = 2,
  ind.label = FALSE, ind.label.size = 4,
- arrow.col = "black", vec.label = TRUE, angle.vec.label = FALSE)
+ var.color = "black", var.size = 0.5,
+ var.label = TRUE, var.label.size = 4, angle.var.label = FALSE)
 }
 \arguments{
 \item{X}{List containing the output of one of the functions of the package.}
 
 \item{axis}{Vector with lenght 2 which contains the axis ploted in x and y axis.}
 
-\item{color}{Points colors. It can be a character indicating the color of all the points or a factor to use different colors.}
+\item{hide}{Vector specifying the elements to be hidden on the plot. Default value is “none”. Other allowed values are “ind” and “var”.}
 
-\item{shape}{Points shape. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.}
+\item{label}{It indicates the label for points. If it is "auto" the labels are the row names of the coordinates of individuals. If it isn't auto it would be a vector containing the labels.}
 
-\item{size}{numeric value indicating the size of points.}
+\item{ind.shape}{Points shape. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.}
+
+\item{ind.color}{Points colors. It can be a character indicating the color of all the points or a factor to use different colors.}
+
+\item{ind.size}{Size of points.}
 
 \item{ind.label}{Logical value, if it is TRUE it prints the name for each row of X. If it is FALSE (default) does not print the names.}
 
-\item{ind.label.size}{numeric value indicating the size of the labels of points.}
+\item{ind.label.size}{Numeric value indicating the size of the labels of points.}
 
-\item{arrow.col}{Character indicating the color of the arrows.}
+\item{var.color}{Character indicating the color of the arrows.}
 
-\item{vec.label}{Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.}
+\item{var.size}{Size of arrow.}
 
-\item{angle.vec.label}{Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.}
+\item{var.label}{Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.}
+
+\item{var.label.size}{Numeric value indicating the size of the labels of variables.}
+
+\item{angle.var.label}{Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.}
 }
 \value{
 Return a \code{\link{ggplot2}} object.
