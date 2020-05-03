@@ -9,7 +9,7 @@ Plot_Biplot(X, axis = c(1,2), hide = "none",
  ind.color = "red", ind.size = 2,
  ind.label = FALSE, ind.label.size = 4,
  var.color = "black", var.size = 0.5,
- var.label = TRUE, var.label.size = 4, angle.var.label = FALSE)
+ var.label = TRUE, var.label.size = 4, var.label.angle = FALSE)
 }
 \arguments{
 \item{X}{List containing the output of one of the functions of the package.}
@@ -38,7 +38,7 @@ Plot_Biplot(X, axis = c(1,2), hide = "none",
 
 \item{var.label.size}{Numeric value indicating the size of the labels of variables.}
 
-\item{angle.var.label}{Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.}
+\item{var.label.angle}{Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.}
 }
 \value{
 Return a \code{\link{ggplot2}} object.

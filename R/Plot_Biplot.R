@@ -7,7 +7,7 @@
 #'  ind.color = "red", ind.size = 2,
 #'  ind.label = FALSE, ind.label.size = 4,
 #'  var.color = "black", var.size = 0.5,
-#'  var.label = TRUE, var.label.size = 4, angle.var.label = FALSE)
+#'  var.label = TRUE, var.label.size = 4, var.label.angle = FALSE)
 #'
 #' @param X List containing the output of one of the functions of the package.
 #'
@@ -35,7 +35,7 @@
 #'
 #' @param var.label.size Numeric value indicating the size of the labels of variables.
 #'
-#' @param angle.var.label Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.
+#' @param var.label.angle Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.
 #'
 #' @return Return a \code{\link{ggplot2}} object.
 #'
@@ -58,7 +58,7 @@ Plot_Biplot <- function(X, axis = c(1,2), hide = "none",
                         ind.color = "red", ind.size = 2,
                         ind.label = FALSE, ind.label.size = 4,
                         var.color = "black", var.size = 0.5,
-                        var.label = TRUE, var.label.size = 4, angle.var.label = FALSE
+                        var.label = TRUE, var.label.size = 4, var.label.angle = FALSE
                         ){
 
   #### Checkin functions ####
@@ -198,7 +198,7 @@ Plot_Biplot <- function(X, axis = c(1,2), hide = "none",
 
     #### >>Angle names ####
     ifelse(
-      var.label == TRUE & angle.var.label == TRUE,
+      var.label == TRUE & var.label.angle == TRUE,
       #Angulo para los nombres de las variables
       angle <- atan(new_coord_var[, y.var] / new_coord_var[, x.var]) * 360 / (2 * pi),
       angle <- rep(0, nrow(new_coord_var))
