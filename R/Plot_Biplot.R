@@ -3,7 +3,7 @@
 #' @description \code{Plot_Biplot} initializes a ggplot2-based visualization of the caracteristics presented in the data analized by the Biplot selected.
 #'
 #' @usage Plot_Biplot(X, axis = c(1,2), hide = "none",
-#'  label = "auto", ind.shape = 19,
+#'  labels = "auto", ind.shape = 19,
 #'  ind.color = "red", ind.size = 2,
 #'  ind.label = FALSE, ind.label.size = 4,
 #'  var.color = "black", var.size = 0.5,
@@ -15,7 +15,7 @@
 #'
 #' @param hide Vector specifying the elements to be hidden on the plot. Default value is “none”. Other allowed values are “ind” and “var”.
 #'
-#' @param label It indicates the label for points. If it is "auto" the labels are the row names of the coordinates of individuals. If it isn't auto it would be a vector containing the labels.
+#' @param labels It indicates the label for points. If it is "auto" the labels are the row names of the coordinates of individuals. If it isn't auto it would be a vector containing the labels.
 #'
 #' @param ind.shape Points shape. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.
 #'
@@ -54,7 +54,7 @@
 #' @export
 
 Plot_Biplot <- function(X, axis = c(1,2), hide = "none",
-                        label = "auto", ind.shape = 19,
+                        labels = "auto", ind.shape = 19,
                         ind.color = "red", ind.size = 2,
                         ind.label = FALSE, ind.label.size = 4,
                         var.color = "black", var.size = 0.5,
@@ -151,11 +151,12 @@ Plot_Biplot <- function(X, axis = c(1,2), hide = "none",
         aes(
           x = X$coord_ind[, x.var],
           y = X$coord_ind[, y.var],
-          label = ifelse(
-            label == "auto",
-            rownames(X$coord_ind),
-            label
-          ),
+          label =
+              ifelse(
+              rep(labels == "auto", nrow(X$coord_ind)),
+              rownames(X$coord_ind),
+              labels
+              ),
           colour = ind.color),
         size = ind.label.size
       )
