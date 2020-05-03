@@ -50,19 +50,19 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ### Plot_Biplot parameters
 * `X`: list containing the output of one of the functions of the package. 
-* `axis`: Vector with lenght 2 which contains the axis ploted in x and y axis.
-* `hide`: 
-* `label`: 
+* `axis`: vector with lenght 2 which contains the axis ploted in x and y axis.
+* `hide`: vector specifying the elements to be hidden on the plot. Default value is “none”. Other allowed values are “ind” and “var”.
+* `label`: it indicates the label for points. If it is "auto" the labels are the row names of the coordinates of individuals. If it isn't auto it would be a vector containing the labels.
 * `ind.shape`: points shapes. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.
 * `ind.color`: points colors. It can be a character indicating the color of all the points or a factor to use different colors.
 * `ind.size`: numeric value indicating the size of points.
 * `ind.label`: logical name indicating if prints the row names. 
 * `ind.label.size`: numeric value indicating the size of the label of points.
-* `var.col`: color of the arrows. 
-* `var.size`: 
+* `var.col`: character indicating the color of the arrows.
+* `var.size`: size of arrow.
 * `var.label`: logical name indicating if prints the column names. 
-* `var.label.size`: 
-* `angle.vec.label`: logical name indicating if print the vector names with orentation of the angle of the vector. 
+* `var.label.size`: numeric value indicating the size of the labels of variables.
+* `var.label.angle`: logical value indicating if print the vector names with orentation of the angle of the vector. 
 
 
 ## Example
