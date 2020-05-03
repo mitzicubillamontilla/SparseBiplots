@@ -51,13 +51,17 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 ### Plot_Biplot parameters
 * `X`: list containing the output of one of the functions of the package. 
 * `axis`: Vector with lenght 2 which contains the axis ploted in x and y axis.
-* `color`: points colors. It can be a character indicating the color of all the points or a factor to use different colors.
-* `shape`: points shapes. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.
-* `size`: numeric value indicating the size of points.
+* `hide`: 
+* `label`: 
+* `ind.shape`: points shapes. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.
+* `ind.color`: points colors. It can be a character indicating the color of all the points or a factor to use different colors.
+* `ind.size`: numeric value indicating the size of points.
 * `ind.label`: logical name indicating if prints the row names. 
 * `ind.label.size`: numeric value indicating the size of the label of points.
-* `arrow.col`: color of the arrows. 
-* `vec.label`: logical name indicating if prints the column names. 
+* `var.col`: color of the arrows. 
+* `var.size`: 
+* `var.label`: logical name indicating if prints the column names. 
+* `var.label.size`: 
 * `angle.vec.label`: logical name indicating if print the vector names with orentation of the angle of the vector. 
 
 
