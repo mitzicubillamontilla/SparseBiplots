@@ -52,7 +52,7 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 * `X`: list containing the output of one of the functions of the package. 
 * `axis`: vector with lenght 2 which contains the axis ploted in x and y axis.
 * `hide`: vector specifying the elements to be hidden on the plot. Default value is “none”. Other allowed values are “ind” and “var”.
-* `label`: it indicates the label for points. If it is "auto" the labels are the row names of the coordinates of individuals. If it isn't auto it would be a vector containing the labels.
+* `labels`: it indicates the label for points. If it is "auto" the labels are the row names of the coordinates of individuals. If it isn't auto it would be a vector containing the labels.
 * `ind.shape`: points shapes. It can be a number to indicate the shape of all the points or a factor to indicate different shapes.
 * `ind.color`: points colors. It can be a character indicating the color of all the points or a factor to use different colors.
 * `ind.size`: numeric value indicating the size of points.
