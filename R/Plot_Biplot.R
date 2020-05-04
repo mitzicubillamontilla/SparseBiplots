@@ -145,18 +145,21 @@ Plot_Biplot <- function(X, axis = c(1,2), hide = "none",
 
   #### >>Point names ####
   if (isTRUE(ind.label)){
+    # Labels
+    if(unique(length(labels) == 1) & unique(labels == "auto")){
+      label.used <- rownames(X$coord_ind)
+      } else {
+        label.used <- labels
+        }
+
+    # Add point names
     biplot <-
       biplot +
       geom_text_repel(
         aes(
           x = X$coord_ind[, x.var],
           y = X$coord_ind[, y.var],
-          label =
-              ifelse(
-              rep(labels == "auto", nrow(X$coord_ind)),
-              rownames(X$coord_ind),
-              labels
-              ),
+          label = label.used,
           colour = ind.color),
         size = ind.label.size
       )

@@ -1,7 +1,7 @@
 Package: SparseBiplots
 Type: Package
 Title: HJ Biplot using diferents ways of penalization plotting with 'ggplot2'
-Version: 1.0.0
+Version: 1.0.1
 Author: 
   Mitzi Cubilla-Montilla <mitzi@usal.es>, 
   Carlos Torres-Cubilla <carlos_t22@usal.es>,
