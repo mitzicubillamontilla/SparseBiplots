@@ -1,3 +1,8 @@
+  
+---
+output: github_document
+---
+
 # SparseBiplots
 
 [![CRAN status](https://www.r-pkg.org/badges/version/SparseBiplots)](https://cran.r-project.org/web/packages/SparseBiplots/index.html)
