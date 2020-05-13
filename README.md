@@ -67,13 +67,13 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ## Example
 
-```R
+```{r}
 library("SparseBiplots")
 hj.biplot <- HJBiplot(mtcars, Transform.Data = 'scale')
 ```
 It fit the HJ-Biplot on the R data `mtcars` returning a list that contains the results of the fiting (`hj_mtcars`). To create the plot use the function `Plot_Biplot` over the list obtained. 
 
-```R
+```{r}
 Plot_Biplot(hj.biplot, ind.label = TRUE)
 ```
 <img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJBiplot_example.png" width="750">
