@@ -17,7 +17,7 @@ Tuning parameter of the LASSO penalty. Higher values lead to sparser components.
 Tuning parameter of the Ridge shrinkage}
 
 \item{Transform.Data}{character; \cr
-A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" or "scale". For default is "scale".}
+A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. Default is "scale".}
 }
 \value{
 \code{ElasticNet_HJBiplot} returns a list containing the following components:
@@ -52,7 +52,7 @@ This function is a generalization of the Ridge regularization method and the LAS
 Algorithm used to perform automatic selection of variables and continuous contraction simultaneously. With this method, the model obtained is simpler and more interpretable. It is a particularly useful method when the number of variables is much greater than the number of observations.
 }
 \examples{
- ElasticNet_HJBiplot(mtcars, Lambda = 0.2, Alpha = 0.1, Transform.Data = 'scale')
+ ElasticNet_HJBiplot(mtcars, Lambda = 0.2, Alpha = 0.1)
 
 }
 \references{

@@ -14,7 +14,7 @@ A data frame which provides the data to be analyzed. All the variables must be n
 Tuning parameter for the Ridge penalty}
 
 \item{Transform.Data}{character; \cr
-A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default it is "scale".}
+A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. Default is "scale".}
 }
 \value{
 \code{Ridge_HJBiplot} returns a list containing the following components:
@@ -45,7 +45,7 @@ This function performs the representation of the HJ Biplot applying the Ridge re
 Algorithm used to contract the loads of the main components towards zero, but without achieving the nullity of any. If the penalty parameter is less than or equal to 1e-4 the result is like Galindo's HJ Biplot (1986).
 }
 \examples{
- Ridge_HJBiplot(mtcars, Lambda = 0.2, Transform.Data = 'scale')
+ Ridge_HJBiplot(mtcars, Lambda = 0.2)
 
 }
 \references{

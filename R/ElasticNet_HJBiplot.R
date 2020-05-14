@@ -8,7 +8,7 @@
 #'     A data frame with the information to be analyzed
 #'
 #' @param Transform.Data character; \cr
-#'    A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" or "scale". For default is "scale".
+#'    A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. Default is "scale".
 #'
 #' @param Lambda  float; \cr
 #'     Tuning parameter of the LASSO penalty. Higher values lead to sparser components.
@@ -55,7 +55,7 @@
 #' @seealso \code{\link{spca}}, \code{\link{Plot_Biplot}}
 #'
 #' @examples
-#'  ElasticNet_HJBiplot(mtcars, Lambda = 0.2, Alpha = 0.1, Transform.Data = 'scale')
+#'  ElasticNet_HJBiplot(mtcars, Lambda = 0.2, Alpha = 0.1)
 #'
 #' @import sparsepca
 #'
@@ -130,6 +130,7 @@ ElasticNet_HJBiplot <- function(X, Lambda = 1e-04, Alpha = 1e-04, Transform.Data
       k=dim(X)[2],
       alpha = Alpha,
       beta = Lambda,
+      center = FALSE,
       scale = FALSE,
       verbose = FALSE
       )
@@ -147,6 +148,17 @@ ElasticNet_HJBiplot <- function(X, Lambda = 1e-04, Alpha = 1e-04, Transform.Data
 
   ##### 6. Output ####
 
+  #### >Eigenvalues ####
+  hj_elasticnet$eigenvalues <- spca$eigenvalues
+  names(hj_elasticnet$eigenvalues) <- PCs
+
+  #### > Explained variance ####
+  hj_elasticnet$explvar <-
+    round(
+    hj_elasticnet$eigenvalues / sum(hj_elasticnet$eigenvalues),
+    digits = 4
+    ) * 100
+
   #### >Loagings ####
   hj_elasticnet$loadings <- V_L
   row.names(hj_elasticnet$loadings) <- vec_tag #update row
@@ -161,17 +173,6 @@ ElasticNet_HJBiplot <- function(X, Lambda = 1e-04, Alpha = 1e-04, Transform.Data
   #### >Column coordinates ####
   hj_elasticnet$coord_var <- t(D %*% t(hj_elasticnet$loadings))
   colnames(hj_elasticnet$coord_var) <- PCs[, 1:dim(hj_elasticnet$coord_var)[2]]
-
-  #### >Eigenvalues ####
-  QR <- qr(hj_elasticnet$coord_ind) # QR decomposition
-  R <- qr.R( QR )
-  hj_elasticnet$eigenvalues <- round(abs(diag(R)),digits=4)
-  hj_elasticnet$eigenvalues <- as.vector(hj_elasticnet$eigenvalues)
-  names(hj_elasticnet$eigenvalues) <- PCs
-
-  #### > Explained variance ####
-  vari <- hj_elasticnet$eigenvalues^2
-  hj_elasticnet$explvar <- round(vari/sum(vari), digits = 4)*100
 
 
   hj_elasticnet

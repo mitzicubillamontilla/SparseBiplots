@@ -14,7 +14,7 @@ A data frame which provides the data to be analyzed. All the variables must be n
 Tuning parameter for the LASSO penalty}
 
 \item{Transform.Data}{character; \cr
-A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".}
+A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. Default is "scale".}
 
 \item{Operator}{character; \cr
 The operator used to solve the norm L1. Allowed values are "Soft-Thresholding" and "Hard-Thresholding".}
@@ -52,7 +52,7 @@ This function performs the representation of the SPARSE HJ Biplot applying the L
 Algorithm that performs a procedure of contraction and selection of variables. LASSO imposes a penalty that causes the charges of some components to be reduced to zero. By producing zero loadings for some components and not zero for others, the Lasso technique performs selection of variables. As the value of the penalty approaches one, the loadings approach zero.
 }
 \examples{
- LASSO_HJBiplot(mtcars, Lambda = 0.2, Transform.Data = 'scale', Operator = 'Hard-Thresholding')
+ LASSO_HJBiplot(mtcars, Lambda = 0.2, Operator = 'Hard-Thresholding')
 
 }
 \references{

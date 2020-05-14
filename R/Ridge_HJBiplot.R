@@ -8,7 +8,7 @@
 #'     A data frame which provides the data to be analyzed. All the variables must be numeric.
 #'
 #' @param Transform.Data character; \cr
-#'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default it is "scale".
+#'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. Default is "scale".
 #'
 #' @param Lambda  float; \cr
 #'     Tuning parameter for the Ridge penalty
@@ -48,7 +48,9 @@
 #' @seealso \code{\link{Plot_Biplot}}
 #'
 #' @examples
-#'  Ridge_HJBiplot(mtcars, Lambda = 0.2, Transform.Data = 'scale')
+#'  Ridge_HJBiplot(mtcars, Lambda = 0.2)
+#'
+#' @import stats
 #'
 #' @export
 
@@ -110,6 +112,18 @@ Ridge_HJBiplot <- function(X, Lambda, Transform.Data = 'scale'){
 
   ##### 4. Output ####
 
+  #### >Eigenvalues ####
+  hj_ridge$eigenvalues <- eigen(cor(X))$values
+  names(hj_ridge$eigenvalues) <- PCs
+
+  #### > Explained variance ####
+  hj_ridge$explvar <-
+    round(
+      hj_ridge$eigenvalues / sum(hj_ridge$eigenvalues),
+      digits = 4
+      ) * 100
+  names(hj_ridge$explvar) <- PCs
+
   #### >Loagings ####
   hj_ridge$loadings <- V
   row.names(hj_ridge$loadings) <- vec_tag
@@ -125,16 +139,6 @@ Ridge_HJBiplot <- function(X, Lambda, Transform.Data = 'scale'){
   row.names(hj_ridge$coord_var) = vec_tag
   colnames(hj_ridge$coord_var) = PCs
 
-  #### >Eigenvalues ####
-  QR <- qr(hj_ridge$coord_ind) # QR decomposition
-  R <- diag(qr.R( QR ))
-  hj_ridge$eigenvalues <- as.vector(round(abs(R), digits=4))
-  names(hj_ridge$eigenvalues) <- PCs
-
-  #### > Explained variance ####
-  vari <- hj_ridge$eigenvalues^2
-  hj_ridge$explvar <- round(vari/sum(vari), digits = 4)*100 #VARIANZA EXPLICADA
-  names(hj_ridge$explvar) <- PCs
 
   hj_ridge
 

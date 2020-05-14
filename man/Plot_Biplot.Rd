@@ -47,7 +47,7 @@ Return a \code{\link{ggplot2}} object.
 \code{Plot_Biplot} initializes a ggplot2-based visualization of the caracteristics presented in the data analized by the Biplot selected.
 }
 \examples{
-hj.biplot <- HJBiplot(mtcars, Transform.Data = 'scale')
+hj.biplot <- HJBiplot(mtcars)
 Plot_Biplot(hj.biplot, ind.label = TRUE)
 
 }

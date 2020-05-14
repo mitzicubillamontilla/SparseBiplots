@@ -44,7 +44,7 @@
 #' @seealso \code{\link{HJBiplot}}, \code{\link{Ridge_HJBiplot}}, \code{\link{ElasticNet_HJBiplot}}
 #'
 #' @examples
-#' hj.biplot <- HJBiplot(mtcars, Transform.Data = 'scale')
+#' hj.biplot <- HJBiplot(mtcars)
 #' Plot_Biplot(hj.biplot, ind.label = TRUE)
 #'
 #' @import ggplot2

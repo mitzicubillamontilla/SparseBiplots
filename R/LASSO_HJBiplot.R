@@ -8,7 +8,7 @@
 #'      A data frame which provides the data to be analyzed. All the variables must be numeric.
 #'
 #' @param Transform.Data character; \cr
-#'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".
+#'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. Default is "scale".
 #'
 #' @param Lambda  float; \cr
 #'     Tuning parameter for the LASSO penalty
@@ -55,7 +55,9 @@
 #' @seealso \code{\link{Plot_Biplot}}
 #'
 #' @examples
-#'  LASSO_HJBiplot(mtcars, Lambda = 0.2, Transform.Data = 'scale', Operator = 'Hard-Thresholding')
+#'  LASSO_HJBiplot(mtcars, Lambda = 0.2, Operator = 'Hard-Thresholding')
+#'
+#' @import stats
 #'
 #' @export
 LASSO_HJBiplot <- function(X, Lambda, Transform.Data = 'scale', Operator = 'Hard-Thresholding') {
@@ -130,9 +132,9 @@ LASSO_HJBiplot <- function(X, Lambda, Transform.Data = 'scale', Operator = 'Hard
   #### 5. Sparsity magnitude ####
   n_ceros <- vector()
   for (i in 1:ncol(V_LASSO)){
-    n_ceros = cbind(n_ceros, sum((V_LASSO[,i] == 0) * 1))
+    n_ceros = c(n_ceros, sum((V_LASSO[,i] == 0) * 1))
   }
-  colnames(n_ceros) <- PCs[, 1:dim(n_ceros)[2]]
+  names(n_ceros) <- PCs[, 1:length(n_ceros)]
 
   ##### 6. Output ####
 
@@ -152,15 +154,28 @@ LASSO_HJBiplot <- function(X, Lambda, Transform.Data = 'scale', Operator = 'Hard
   colnames(hj_lasso$coord_var) <- PCs[, 1:dim(hj_lasso$coord_var)[2]]
 
   #### >Eigenvalues ####
+
+  ## Calculate variance
   QR <- qr(hj_lasso$coord_ind) #Descomposicion QR
   R <- qr.R( QR )
-  hj_lasso$eigenvalues <- round(abs(diag(R)),digits=4)
-  hj_lasso$eigenvalues <- as.vector(hj_lasso$eigenvalues)
+  Variance <- abs(diag(R))
+  Variance <- as.vector(Variance)
+
+  ## Eigenvalues
+  hj_lasso$eigenvalues <-
+    eigen(
+      cor(
+        svd$u %*% diag(Variance) %*% t(V_LASSO)
+        )
+      )$values
   names(hj_lasso$eigenvalues) <- PCs
 
   #### > Explained variance ####
-  vari <- hj_lasso$eigenvalues^2
-  hj_lasso$explvar <- round(vari/sum(vari), digits = 4)*100
+  hj_lasso$explvar <-
+    round(
+      hj_lasso$eigenvalues / sum(hj_lasso$eigenvalues),
+      digits = 4
+    ) * 100
 
 
   hj_lasso

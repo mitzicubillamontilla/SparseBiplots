@@ -11,7 +11,7 @@ HJBiplot (X, Transform.Data = 'scale')
 A data frame which provides the data to be analyzed. All the variables must be numeric.}
 
 \item{Transform.Data}{character; \cr
-A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".}
+A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. Default is "scale".}
 }
 \value{
 \code{HJBiplot} returns a list containing the following components:
@@ -42,7 +42,7 @@ This function performs the representation of HJ Biplot (Galindo, 1986).
 Algorithm used to construct the HJ Biplot. The Biplot is obtained as result of the configuration of markers for individuals and markers for variables in a reference system defined by the factorial axes resulting from the Decomposition in Singular Values (DVS).
 }
 \examples{
- HJBiplot(mtcars, Transform.Data = 'scale')
+ HJBiplot(mtcars)
 
 }
 \references{

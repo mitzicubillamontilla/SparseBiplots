@@ -8,7 +8,7 @@
 #'     A data frame which provides the data to be analyzed. All the variables must be numeric.
 #'
 #' @param Transform.Data character; \cr
-#'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. For default is "scale".
+#'     A value indicating whether the columns of X (variables) should be centered or scaled. Options are: "center" that removes the columns means and "scale" that removes the columns means and divide by its standard deviation. Default is "scale".
 #'
 #'
 #' @details Algorithm used to construct the HJ Biplot. The Biplot is obtained as result of the configuration of markers for individuals and markers for variables in a reference system defined by the factorial axes resulting from the Decomposition in Singular Values (DVS).
@@ -45,7 +45,9 @@
 #' @seealso \code{\link{Plot_Biplot}}
 #'
 #' @examples
-#'  HJBiplot(mtcars, Transform.Data = 'scale')
+#'  HJBiplot(mtcars)
+#'
+#' @import stats
 #'
 #' @export
 
@@ -111,11 +113,15 @@ HJBiplot <- function(X, Transform.Data = 'scale'){
   ##### 4. Output ####
 
   #### >Eigenvalues ####
-  hjb$eigenvalues <- d
+  hjb$eigenvalues <- eigen(cor(X))$values
   names(hjb$eigenvalues) <- PCs
 
   #### > Explained variance ####
-  hjb$explvar <- round(d^2/sum(d^2), digits = 4)*100
+  hjb$explvar <-
+    round(
+      hjb$eigenvalues / sum(hjb$eigenvalues),
+      digits = 4
+    ) * 100
   names(hjb$explvar) <- PCs
 
   #### >Loagings ####
@@ -128,7 +134,7 @@ HJBiplot <- function(X, Transform.Data = 'scale'){
   colnames(hjb$coord_ind) <- PCs
 
   #### >Column coordinates ####
-  hjb$coord_var = t(D%*%t(V))
+  hjb$coord_var <- t(D %*% t(V))
   row.names(hjb$coord_var) <- vec_tag
   colnames(hjb$coord_var) <- PCs
 
