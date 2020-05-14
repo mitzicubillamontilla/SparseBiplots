@@ -17,12 +17,12 @@ This package provides functions to perform the HJ-Biplot (Galindo, 1986) and mod
 ## Installation
 
 * Install *SparseBiplots* from **CRAN**:
-```R
+```{r Install from CRAN}
 install.packages("SparseBiplots")
 ```
 
 * Install *SparseBiplots* from **GitHub** using [devtools](https://github.com/r-lib/devtools):
-```R
+```{r Install from GitHub}
 install.packages("devtools")
 devtools::install_github("mitzicubillamontilla/SparseBiplots")
 ```
@@ -67,19 +67,19 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 
 ## Example
 
-```{r}
+```{r Fit HJ-Biplot}
 library("SparseBiplots")
 hj.biplot <- HJBiplot(mtcars)
 ```
 It fit the HJ-Biplot on the R data `mtcars` returning a list that contains the results of the fiting (`hj_mtcars`). To create the plot use the function `Plot_Biplot` over the list obtained. 
 
-```{r}
+```{r Visualize HJ-Biplot}
 Plot_Biplot(hj.biplot, ind.label = TRUE)
 ```
 <img src="https://github.com/mitzicubillamontilla/SparseBiplots/blob/master/plots/HJBiplot_example.png" width="750">
 
 ## References
 
-* [Cubilla-Montilla, M. I. (2019). Contribuciones al anàlisis biplot basadas en soluciones factoriales disjuntas y en soluciones sparse (Doctoral dissertation, Universidad de Salamanca).](https://gredos.usal.es/handle/10366/140389)
+* [Cubilla-Montilla, M. I. (2019). Contribuciones al análisis biplot basadas en soluciones factoriales disjuntas y en soluciones sparse (Doctoral dissertation, Universidad de Salamanca).](https://gredos.usal.es/handle/10366/140389)
 * [Erichson, N. B., et al. (2018). Sparse principal component analysis via variable projection.](https://arxiv.org/abs/1804.00341)
 * [Galindo, M. P. (1986). Una Alternativa de Representación Simultanea: HJ-Biplot. Qüestiió, 10:13-23.](http://diarium.usal.es/pgalindo/files/2012/07/0article-HJ-1986.pdf)
