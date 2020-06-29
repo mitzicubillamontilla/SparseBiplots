@@ -1,4 +1,4 @@
-#' @title LASSO HJ Biplot
+#' @title LASSO HJ Biplot 
 #'
 #' @description This function performs the representation of the SPARSE HJ Biplot applying the LASSO regularization, on the original data matrix, implementing the norm L1.
 #'

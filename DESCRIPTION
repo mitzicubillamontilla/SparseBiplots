@@ -1,7 +1,7 @@
 Package: SparseBiplots
 Type: Package
-Title: HJ Biplot using diferents ways of penalization plotting with 'ggplot2'
-Version: 1.0.1
+Title: 'HJ-Biplot' using Different Ways of Penalization Plotting with 'ggplot2'.
+Version: 4.0.0
 Author: 
   Mitzi Isabel Cubilla-Montilla <mitzi@usal.es>, 
   Carlos Alfredo Torres-Cubilla <carlos_t22@usal.es>,
@@ -9,7 +9,7 @@ Author:
   Ana Belen Nieto-Librero <ananieto@usal.es>
 Maintainer: 
   Mitzi Isabel Cubilla-Montilla <mitzi@usal.es>
-Description: The sparseHJBiplot package contains a set of functions that allow to represent multivariate on a subspace of low dimension, in such a way that most of the variability of the information is captured. This representation is carried out through the HJ Biplot methodology. A first method performs Galindo's HJ-Biplot (1986). Then, the package implements three new techniques and constructs in each case the HJ Biplot, adapting restrictions to contract and / or produce zero charges in the main components, based on the regularization theories. It implements three methods of regularization: Ridge, LASSO and Elastic Net.
+Description: 'HJ-Biplot' is a multivariate method that allow represent multivariate data on a subspace of low dimension, in such a way that most of the variability of the information is captured in a few dimensions. This package implements three new techniques and constructs in each case the 'HJ-Biplot', adapting restrictions to reduce weights and / or produce zero weights in the dimensions, based on the regularization theories. It implements three methods of regularization: Ridge, LASSO and Elastic Net.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
@@ -18,9 +18,12 @@ Depends:
   ggplot2
 Imports: 
   ggrepel,
+  gtable, 
+  rlang, 
   stats, 
   sparsepca, 
   testthat
+URL: https://github.com/mitzicubillamontilla/SparseBiplots
+BugReports: https://github.com/mitzicubillamontilla/SparseBiplots/issues
 RoxygenNote: 7.1.0
 NeedsCompilation: no
-  

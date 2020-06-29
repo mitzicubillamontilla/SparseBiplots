@@ -1,4 +1,4 @@
-#' @title Elastic Net HJ Biplot
+#' @title Elastic Net HJ Biplot 
 #'
 #' @description This function is a generalization of the Ridge regularization method and the LASSO penalty. Realizes the representation of the SPARSE HJ Biplot through a combination of LASSO and Ridge, on the data matrix. This means that with this function you can eliminate weak variables completely as with the LASSO regularization or contract them to zero as in Ridge.
 #'

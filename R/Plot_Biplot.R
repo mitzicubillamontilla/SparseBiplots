@@ -1,4 +1,4 @@
-#' @title Plotting Biplot
+#' @title Plotting Biplot 
 #'
 #' @description \code{Plot_Biplot} initializes a ggplot2-based visualization of the caracteristics presented in the data analized by the Biplot selected.
 #'

@@ -1,4 +1,4 @@
-#' @title Ridge HJ Biplot
+#' @title Ridge HJ Biplot 
 #'
 #' @description This function performs the representation of the HJ Biplot applying the Ridge regularization, on the original data matrix, implementing the norm L2.
 #'
