@@ -14,7 +14,7 @@ citEntry(entry = "article",
   number = "11",
   pages = "1298", 
   isbn = "2227-7390",
-  doi = "http://dx.doi.org/10.3390/math9111298", 
+  doi = "https://doi.org/10.3390/math9111298", 
   url = "https://www.mdpi.com/2227-7390/9/11/1298",
   textVersion = "Cubilla-Montilla, M., Nieto-Librero, A. B., Galindo-Villardón, M. P., & Torres-Cubilla, C. A. (2021). Sparse HJ Biplot: A New Methodology via Elastic Net. Mathematics, 9(11), 1298. http://dx.doi.org/10.3390/math9111298"
 )
