@@ -37,7 +37,7 @@
 #'
 #' @param var.label.angle Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.
 #'
-#' @return Return a \code{\link{ggplot2}} object.
+#' @return Return a \pkg{ggplot2} object.
 #'
 #' @author Mitzi Cubilla-Montilla, Carlos Torres-Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
 #'

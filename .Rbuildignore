@@ -1,4 +1,3 @@
-^.*\.Rproj$
-^\.Rproj\.user$
+^SparseBiplots\.Rproj$
 ^plots$
-^.*\.md$
+^\.Rproj\.user$

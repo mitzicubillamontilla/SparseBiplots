@@ -1,6 +1,6 @@
 # SparseBiplots
 
-[![CRAN status](https://www.r-pkg.org/badges/version/SparseBiplots)](https://cran.r-project.org/web/packages/SparseBiplots/index.html)
+[![CRAN status](https://www.r-pkg.org/badges/version/SparseBiplots)](https://CRAN.R-project.org/package=SparseBiplots)
 
 ## Overview
 
