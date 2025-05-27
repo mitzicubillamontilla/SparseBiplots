@@ -52,7 +52,7 @@
 #'  \item Zou, H., & Hastie, T. (2005). Regularization and variable selection via the elastic net. Journal of the royal statistical society: series B (statistical methodology), 67(2), 301-320.
 #' }
 #'
-#' @seealso \code{\link{spca}}, \code{\link{Plot_Biplot}}
+#' @seealso \code{[elasticnet]{spca}}, \code{\link{Plot_Biplot}}
 #'
 #' @examples
 #'  ElasticNet_HJBiplot(mtcars, Lambda = 0.2, Alpha = 0.1)

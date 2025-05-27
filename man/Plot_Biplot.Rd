@@ -41,7 +41,7 @@ Plot_Biplot(X, axis = c(1,2), hide = "none",
 \item{var.label.angle}{Logical value, if it it TRUE (default) it print the vector names with orentation of the angle of the vector. If it is FALSE the angle of all tags is 0.}
 }
 \value{
-Return a \code{\link{ggplot2}} object.
+Return a \pkg{ggplot2} object.
 }
 \description{
 \code{Plot_Biplot} initializes a ggplot2-based visualization of the caracteristics presented in the data analized by the Biplot selected.

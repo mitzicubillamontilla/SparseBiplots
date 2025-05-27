@@ -63,7 +63,7 @@ Algorithm used to perform automatic selection of variables and continuous contra
 }
 }
 \seealso{
-\code{\link{spca}}, \code{\link{Plot_Biplot}}
+\code{[elasticnet]{spca}}, \code{\link{Plot_Biplot}}
 }
 \author{
 Mitzi Cubilla-Montilla, Carlos Torres-Cubilla, Ana Belen Nieto Librero and Purificacion Galindo Villardon
