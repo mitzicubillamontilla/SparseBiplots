@@ -60,6 +60,9 @@ devtools::install_github("mitzicubillamontilla/SparseBiplots")
 * `ind.label.size`: numeric value indicating the size of the label of points.
 * `var.col`: character indicating the color of the arrows.
 * `var.size`: size of arrow.
+* `var.arrow.type`: one of "open" or "closed" indicating whether the arrow head should be a closed triangle.
+* `var.arrow.angle`: the angle of the arrow head in degrees (smaller numbers produce narrower, pointier arrows). Essentially describes the width of the arrow head.
+* `var.arrow.length`: length of the arrow head (in cm).
 * `var.label`: logical name indicating if prints the column names. 
 * `var.label.size`: numeric value indicating the size of the labels of variables.
 * `var.label.angle`: logical value indicating if print the vector names with orentation of the angle of the vector. 

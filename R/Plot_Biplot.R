@@ -30,6 +30,12 @@
 #' @param var.color Character indicating the color of the arrows.
 #'
 #' @param var.size Size of arrow.
+#' 
+#' @param var.arrow.type One of "open" or "closed" indicating whether the arrow head should be a closed triangle.
+#'
+#' @param var.arrow.angle The angle of the arrow head in degrees (smaller numbers produce narrower, pointier arrows). Essentially describes the width of the arrow head.
+#'
+#' @param var.arrow.length Length of the arrow head (in cm).
 #'
 #' @param var.label Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.
 #'
@@ -58,6 +64,7 @@ Plot_Biplot <- function(X, axis = c(1,2), hide = "none",
                         ind.color = "red", ind.size = 2,
                         ind.label = FALSE, ind.label.size = 4,
                         var.color = "black", var.size = 0.5,
+                        var.arrow.type = "open", var.arrow.angle = 30, var.arrow.length = 0.25, 
                         var.label = TRUE, var.label.size = 4, var.label.angle = FALSE
                         ){
 
@@ -190,12 +197,17 @@ Plot_Biplot <- function(X, axis = c(1,2), hide = "none",
     #### >>Add arrows ####
       biplot <- biplot +
       geom_segment(
-        aes(x = 0,
-            y = 0,
-            xend = new_coord_var[, x.var],
-            yend = new_coord_var[, y.var]
-            ),
-        arrow = arrow(length = unit(0.5, "cm")),
+        aes(
+          x = 0,
+          y = 0,
+          xend = new_coord_var[, x.var],
+          yend = new_coord_var[, y.var]
+        ),
+        arrow = arrow(
+          type = var.arrow.type,
+          angle = var.arrow.angle, 
+          length = unit(var.arrow.length, "cm")
+        ),
         colour = var.color,
         size = var.size
         )

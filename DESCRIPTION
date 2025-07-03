@@ -1,7 +1,7 @@
 Package: SparseBiplots
 Type: Package
 Title: 'HJ-Biplot' using Different Ways of Penalization Plotting with 'ggplot2'
-Version: 4.0.2
+Version: 4.1.0
 Authors@R: c(
   person(given = c("Mitzi", "Isabel"), family = "Cubilla-Montilla", role = c("aut", "cre"), email = "mitzi@usal.es"),
   person(given = c("Carlos", "Alfredo"), family = "Torres-Cubilla", role = "aut", email = "carlos_t22@usal.es"),
