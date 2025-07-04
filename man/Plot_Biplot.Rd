@@ -9,6 +9,7 @@ Plot_Biplot(X, axis = c(1,2), hide = "none",
  ind.color = "red", ind.size = 2,
  ind.label = FALSE, ind.label.size = 4,
  var.color = "black", var.size = 0.5,
+ var.arrow.type = "open", var.arrow.angle = 30, var.arrow.length = 0.25, 
  var.label = TRUE, var.label.size = 4, var.label.angle = FALSE)
 }
 \arguments{
@@ -33,6 +34,12 @@ Plot_Biplot(X, axis = c(1,2), hide = "none",
 \item{var.color}{Character indicating the color of the arrows.}
 
 \item{var.size}{Size of arrow.}
+
+\item{var.arrow.type}{One of "open" or "closed" indicating whether the arrow head should be a closed triangle.}
+
+\item{var.arrow.angle}{The angle of the arrow head in degrees (smaller numbers produce narrower, pointier arrows). Essentially describes the width of the arrow head.}
+
+\item{var.arrow.length}{Length of the arrow head (in cm).}
 
 \item{var.label}{Logical value, if it is TRUE (default) it prints the name for each column of X. If it is FALSE does not print the names.}
 
