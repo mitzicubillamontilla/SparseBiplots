@@ -7,6 +7,7 @@
 #'  ind.color = "red", ind.size = 2,
 #'  ind.label = FALSE, ind.label.size = 4,
 #'  var.color = "black", var.size = 0.5,
+#'  var.arrow.type = "open", var.arrow.angle = 30, var.arrow.length = 0.25, 
 #'  var.label = TRUE, var.label.size = 4, var.label.angle = FALSE)
 #'
 #' @param X List containing the output of one of the functions of the package.
